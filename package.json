@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "nwb": "0.15.x",
+    "nwb-sass": "^0.7.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
