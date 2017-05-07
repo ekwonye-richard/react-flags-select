@@ -26,12 +26,19 @@
     "nwb": "0.15.x",
     "nwb-sass": "^0.7.1",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "svg-inline-loader": "^0.7.1"
   },
-  "author": "",
-  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekwonye-richard/react-flags-select.git"
+  },
+  "author": "Richard Ekwonye",
   "license": "MIT",
-  "repository": "",
+  "bugs": {
+    "url": "https://github.com/ekwonye-richard/react-flags-select/issues"
+  },
+  "homepage": "https://github.com/ekwonye-richard/react-flags-select#readme",
   "keywords": [
     "react-component"
   ]
