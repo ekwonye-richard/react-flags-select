@@ -8,12 +8,5 @@ module.exports = {
         react: 'React'
       }
     }
-  },
-  webpack: {
-    rules: {
-      svg: {
-        loader: 'svg-inline-loader?classPrefix!image-webpack-loader'
-      }
-    }
   }
 }
