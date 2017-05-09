@@ -80,7 +80,7 @@ class ReactFlagsSelect extends Component {
 						<span className="country-flag">
 							<span 
 								style={{width: `${selectedSize}px`, height: `${selectedSize}px`}} 
-								dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!./svg/${isSelected.toLowerCase()}.svg`)}} />
+								dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!../flags/${isSelected.toLowerCase()}.svg`)}} />
 							{this.props.showSelectedLabel &&
 								<span className="country-label">{ this.props.customLabels[isSelected] || countries[isSelected] }</span>
 							}
@@ -100,7 +100,7 @@ class ReactFlagsSelect extends Component {
 								<span  className="country-flag">
 									<span 
 										style={{width: `${optionsSize}px`, height: `${optionsSize}px`}} 
-										dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!./svg/${countryCode.toLowerCase()}.svg`)}} />
+										dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!../flags/${countryCode.toLowerCase()}.svg`)}} />
 									{this.props.showOptionLabel &&
 										<span className="country-label">{ this.props.customLabels[countryCode] || countries[countryCode] }</span>
 									}
