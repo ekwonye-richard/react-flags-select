@@ -23,7 +23,7 @@ import ReactFlagsSelect from 'react-flags-select';
 ## Usage
 
 ```javascript
-    return <ReactFlagsSelect from 'react-flags-select'>;
+    <ReactFlagsSelect />
 ```
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
