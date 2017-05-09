@@ -51,3 +51,7 @@
   .flag-select .arrow-down {
     color: #4d4d4d;
     padding: 2px; }
+  .flag-select .hidden {
+    display: none; }
+  .flag-select .no--focus {
+    pointer-events: none; }
