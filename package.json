@@ -1,11 +1,13 @@
 {
   "name": "react-flags-select",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "react-flags-select React component",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
     "css",
+    "scss",
+    "flags",
     "es",
     "lib",
     "umd"
@@ -25,8 +27,9 @@
     "react": "15.x"
   },
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
     "nwb": "0.15.x",
-    "nwb-sass": "^0.7.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "svg-inline-loader": "^0.7.1"

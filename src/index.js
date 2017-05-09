@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import countries from './countries';
-import './style.scss';
+import '../css/style.css';
 
 class ReactFlagsSelect extends Component {
 	constructor(props){
@@ -26,13 +26,13 @@ class ReactFlagsSelect extends Component {
 	}
 
 	toggleOptions() {
-		this.setState({
+		!this.state.disabled && this.setState({
 			openOptions: !this.state.openOptions
 		});
 	}
 
 	closeOptions(event) {
-		if (event.target !== this.refs.selectedFlag ) {
+		if (event.target !== this.refs.selectedFlag && event.target !== this.refs.flagOptions ) {
 			this.setState({
 				openOptions: false
 			});
@@ -47,23 +47,19 @@ class ReactFlagsSelect extends Component {
 	}
 
 	updateSelected(country) {
-		this.setState({
+		let isValid = countries[country];
+
+		isValid && this.setState({
 			selected: country
 		})
 	}
 
-	getVectorName(countryCode) {
-		let countryName = countries[countryCode].toLowerCase();
-		let vectorName = countryName.replace(' ', '-');
-		return vectorName;
-	}
-
 	componentDidMount() {
-		window.addEventListener("click", this.closeOptions);
+		!this.props.disabled && window.addEventListener("click", this.closeOptions);
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener("click", this.closeOptions);
+		!this.props.disabled && window.removeEventListener("click", this.closeOptions);
 	}
 
 	render() {
@@ -75,12 +71,12 @@ class ReactFlagsSelect extends Component {
 
 		return (
 			<div className={`flag-select ${this.props.className ? this.props.className :  ""}`}>
-				<div ref="selectedFlag" style={{fontSize: `${selectedSize}px`}} className="selected--flag--option" onClick={this.toggleOptions}>
+				<div ref="selectedFlag" style={{fontSize: `${selectedSize}px`}} className={`selected--flag--option ${this.props.disabled ? 'no--focus' : ''}`} onClick={this.toggleOptions}>
 					{isSelected && 
 						<span className="country-flag">
 							<span 
 								style={{width: `${selectedSize}px`, height: `${selectedSize}px`}} 
-								dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!./svg/${isSelected.toLowerCase()}.svg`)}} />
+								dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!../flags/${isSelected.toLowerCase()}.svg`)}} />
 							{this.props.showSelectedLabel &&
 								<span className="country-label">{ this.props.customLabels[isSelected] || countries[isSelected] }</span>
 							}
@@ -90,17 +86,17 @@ class ReactFlagsSelect extends Component {
 					{!isSelected && 
 						<span className="country-label">{this.props.placeholder}</span>
 					}
-					<span className="arrow-down">▾</span>
+					<span className={`arrow-down ${this.props.disabled ? 'hidden' : ''}`}>▾</span>
 				</div>
 
 				{this.state.openOptions &&
-					<div style={{fontSize: `${optionsSize}px`}} className={`flag-options ${alignClass}`}>
+					<div ref="flagOptions" style={{fontSize: `${optionsSize}px`}} className={`flag-options ${alignClass}`}>
 						{this.state.countries.map( countryCode => 
 							<div className="flag-option" key={countryCode} onClick={() => this.onSelect(countryCode)}>
 								<span  className="country-flag">
 									<span 
 										style={{width: `${optionsSize}px`, height: `${optionsSize}px`}} 
-										dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!./svg/${countryCode.toLowerCase()}.svg`)}} />
+										dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!../flags/${countryCode.toLowerCase()}.svg`)}} />
 									{this.props.showOptionLabel &&
 										<span className="country-label">{ this.props.customLabels[countryCode] || countries[countryCode] }</span>
 									}
@@ -121,7 +117,8 @@ ReactFlagsSelect.defaultProps = {
 	showSelectedLabel: true,
 	showOptionLabel: true,
 	alignOptions: 'left',
-	customLabels: []
+	customLabels: [],
+	disabled: false
 }
 
 ReactFlagsSelect.propsType = {
@@ -135,7 +132,8 @@ ReactFlagsSelect.propsType = {
 	showSelectedLabel: PropTypes.bool,
 	showOptionLabel: PropTypes.bool,
 	alignOptions: PropTypes.string,
-	onSelect: PropTypes.func
+	onSelect: PropTypes.func,
+	disabled: PropTypes.bool
 }
 
 export default ReactFlagsSelect;
