@@ -33,6 +33,15 @@ import ReactFlagsSelect from 'react-flags-select/scss/react-flags-select.scss';
     <ReactFlagsSelect />
 ```
 
+### Default Country
+
+You can a default country to be rendered in the component.
+
+```javascript
+    <ReactFlagsSelect
+	defaultCountry="GB" />
+```
+
 ### Countries
 
 You can use an array of countries rather than the full list of countries.
@@ -40,6 +49,27 @@ You can use an array of countries rather than the full list of countries.
 ```javascript
     <ReactFlagsSelect 
     countries={["US", "GB", "FR", "DE", "IT", "NG"]} />
+```
+
+### Custom Labels
+
+You can use an object of countries labels to replace the countries name. The default country name for a countyr will be used when the country code has no label passed.
+
+```javascript
+    <ReactFlagsSelect
+	countries={["US", "GB", "FR","DE","IT"]}
+	customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}} />
+```
+
+### Placeholder
+
+You can replace the default placeholder text.
+
+```javascript
+    <ReactFlagsSelect
+	countries={["US", "GB", "FR","DE","IT"]}
+	customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
+	placeholder="Select Language" />
 ```
 
 ## License
