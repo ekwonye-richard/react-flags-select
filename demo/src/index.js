@@ -11,7 +11,7 @@ let Demo = React.createClass({
       <ReactFlagsSelect
 		countries={["US", "GB", "FR","DE","IT"]}
 		customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
-		defaultCountry="GB"
+		placeholder="Select Language"
 		selectedSize={14}
 		optionsSize={14}
 		showSelectedLabel={false} />
