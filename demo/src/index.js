@@ -1,5 +1,6 @@
 import React from 'react'
 import {render} from 'react-dom'
+import '../../css/react-flags-select.css';
 
 import ReactFlagsSelect from '../../src'
 
