@@ -51,5 +51,5 @@ MIT Licensed. Copyright (c) Richard Ekwonye 2017.
 [npm-badge]: https://img.shields.io/npm/v/react-flags-select.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/react-flags-select
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.svg?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+[coveralls-badge]: https://img.shields.io/coveralls/ekwonye-richard/react-flags-select/master.svg?style=flat-square
+[coveralls]: https://coveralls.io/github/ekwonye-richard/react-flags-select
