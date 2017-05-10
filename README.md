@@ -45,11 +45,11 @@ You can use an array of countries rather than the full list of countries.
 ## License
 MIT Licensed. Copyright (c) Richard Ekwonye 2017.
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+[build-badge]: https://img.shields.io/travis/ekwonye-richard/react-flags-select/master.svg?style=flat-square
+[build]: https://travis-ci.org/ekwonye-richard/react-flags-select
 
-[npm-badge]: https://img.shields.io/npm/v/react-flags-select.png?style=flat-square
+[npm-badge]: https://img.shields.io/npm/v/react-flags-select.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/react-flags-select
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
+[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.svg?style=flat-square
 [coveralls]: https://coveralls.io/github/user/repo
