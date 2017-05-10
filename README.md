@@ -18,6 +18,13 @@ react-flags-select can be imported as follows
 
 ```javascript
 import ReactFlagsSelect from 'react-flags-select';
+
+//import css module
+import ReactFlagsSelect from 'react-flags-select/css/react-flags-select.css';
+
+//OR import sass module
+import ReactFlagsSelect from 'react-flags-select/scss/react-flags-select.scss';
+
 ```
 
 ## Usage
@@ -25,6 +32,18 @@ import ReactFlagsSelect from 'react-flags-select';
 ```javascript
     <ReactFlagsSelect />
 ```
+
+### Countries
+
+You can use an array of countries rather than the full list of countries.
+
+```javascript
+    <ReactFlagsSelect 
+    countries={["US", "GB", "FR", "DE", "IT", "NG"]} />
+```
+
+## License
+MIT Licensed. Copyright (c) Richard Ekwonye 2017.
 
 [build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
 [build]: https://travis-ci.org/user/repo
