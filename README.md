@@ -20,10 +20,17 @@ react-flags-select can be imported as follows
 import ReactFlagsSelect from 'react-flags-select';
 
 //import css module
+<<<<<<< HEAD
 import 'react-flags-select/css/react-flags-select.css';
 
 //OR import sass module
 import 'react-flags-select/scss/react-flags-select.scss';
+=======
+import ReactFlagsSelect from 'react-flags-select/css/react-flags-select.css';
+
+//OR import sass module
+import ReactFlagsSelect from 'react-flags-select/scss/react-flags-select.scss';
+>>>>>>> 9cfecb92646d11f97016647c7b582bd2ad698052
 
 ```
 
@@ -39,7 +46,7 @@ You can a default country to be rendered in the component.
 
 ```javascript
     <ReactFlagsSelect
-    defaultCountry="GB" />
+	defaultCountry="GB" />
 ```
 
 ### Countries
@@ -47,7 +54,7 @@ You can a default country to be rendered in the component.
 You can use an array of countries rather than the full list of countries.
 
 ```javascript
-    <ReactFlagsSelect
+    <ReactFlagsSelect 
     countries={["US", "GB", "FR", "DE", "IT", "NG"]} />
 ```
 
@@ -57,8 +64,8 @@ You can use an object of countries labels to replace the countries name. The def
 
 ```javascript
     <ReactFlagsSelect
-    countries={["US", "GB", "FR","DE","IT"]}
-    customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}} />
+	countries={["US", "GB", "FR","DE","IT"]}
+	customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}} />
 ```
 
 ### Placeholder
@@ -67,9 +74,9 @@ You can replace the default placeholder text.
 
 ```javascript
     <ReactFlagsSelect
-    countries={["US", "GB", "FR","DE","IT"]}
-    customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
-    placeholder="Select Language" />
+	countries={["US", "GB", "FR","DE","IT"]}
+	customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
+	placeholder="Select Language" />
 ```
 
 ## License

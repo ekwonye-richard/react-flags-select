@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import countries from './countries';
-import '../css/style.css';
 
 class ReactFlagsSelect extends Component {
 	constructor(props){
