@@ -8,12 +8,5 @@ module.exports = {
         react: 'React'
       }
     }
-  },
-   webpack: {
-    rules: {
-      sass: {
-        data: '@import "_variables"'
-      }
-    }
   }
 }
