@@ -45,11 +45,11 @@ class ReactFlagsSelect extends Component {
 		this.props.onSelect && this.props.onSelect(countryCode);
 	}
 
-	updateSelected(country) {
-		let isValid = countries[country];
+	updateSelected(countryCode) {
+		let isValid = countries[countryCode];
 
 		isValid && this.setState({
-			selected: country
+			selected: countryCode
 		})
 	}
 

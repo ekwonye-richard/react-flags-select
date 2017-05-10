@@ -9,9 +9,9 @@ let Demo = React.createClass({
     return <div>
       <h1>react-flags-select Demo</h1>
       <ReactFlagsSelect
-		countries={["US", "GB", "FR","DE","IT"]}
+		countries={["US", "GB", "FR","DE","IT", "NG"]}
 		customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
-		placeholder="Select Language"
+		defaultCountry="NG"
 		selectedSize={14}
 		optionsSize={14}
 		showSelectedLabel={false} />
