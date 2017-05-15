@@ -72,10 +72,8 @@ class ReactFlagsSelect extends Component {
 			<div className={`flag-select ${this.props.className ? this.props.className :  ""}`}>
 				<div ref="selectedFlag" style={{fontSize: `${selectedSize}px`}} className={`selected--flag--option ${this.props.disabled ? 'no--focus' : ''}`} onClick={this.toggleOptions}>
 					{isSelected && 
-						<span className="country-flag">
-							<span 
-								style={{width: `${selectedSize}px`, height: `${selectedSize}px`}} 
-								dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!../flags/${isSelected.toLowerCase()}.svg`)}} />
+						<span className="country-flag" style={{width: `${selectedSize}px`, height: `${selectedSize}px`}} >
+							<img src={require(`../flags/${isSelected.toLowerCase()}.svg`)} />
 							{this.props.showSelectedLabel &&
 								<span className="country-label">{ this.props.customLabels[isSelected] || countries[isSelected] }</span>
 							}
@@ -92,10 +90,8 @@ class ReactFlagsSelect extends Component {
 					<div ref="flagOptions" style={{fontSize: `${optionsSize}px`}} className={`flag-options ${alignClass}`}>
 						{this.state.countries.map( countryCode => 
 							<div className="flag-option" key={countryCode} onClick={() => this.onSelect(countryCode)}>
-								<span  className="country-flag">
-									<span 
-										style={{width: `${optionsSize}px`, height: `${optionsSize}px`}} 
-										dangerouslySetInnerHTML={{__html: require(`!svg-inline-loader!../flags/${countryCode.toLowerCase()}.svg`)}} />
+								<span className="country-flag" style={{width: `${optionsSize}px`, height: `${optionsSize}px`}} >
+									<img src={require(`../flags/${countryCode.toLowerCase()}.svg`)} />
 									{this.props.showOptionLabel &&
 										<span className="country-label">{ this.props.customLabels[countryCode] || countries[countryCode] }</span>
 									}
