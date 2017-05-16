@@ -41,9 +41,11 @@
       right: 10px; }
   .flag-select .flag-option {
     cursor: pointer;
-    padding: 0px 20px 3px 8px;
+    padding: 0px 8px 3px 8px;
     margin: 4px 0;
     white-space: nowrap; }
+    .flag-select .flag-option.has-label {
+      padding: 0px 20px 3px 8px; }
     .flag-select .flag-option:hover {
       background: #eaeaea; }
     .flag-select .flag-option .country-label {

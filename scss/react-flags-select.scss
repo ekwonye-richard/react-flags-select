@@ -49,9 +49,12 @@
     }
     .flag-option {
         cursor: pointer;
-        padding: 0px 20px 3px 8px;
+        padding: 0px 8px 3px 8px;
         margin: 4px 0;
         white-space: nowrap;
+        &.has-label {
+            padding: 0px 20px 3px 8px;
+        }
         &:hover {
             background: #eaeaea;
         }
@@ -63,10 +66,10 @@
         color: #4d4d4d;
         padding: 2px;
     }
-    .hidden{
+    .hidden {
         display: none;
     }
-    .no--focus{
+    .no--focus {
         pointer-events: none;
     }
 }

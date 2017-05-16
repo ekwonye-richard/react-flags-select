@@ -152,6 +152,7 @@ You can disable the options dropdown, however the selected country can be update
 ```javascript
     <ReactFlagsSelect
     defaultCountry="US"
+    showSelectedLabel={false}
     disabled={true} />
 ```
 

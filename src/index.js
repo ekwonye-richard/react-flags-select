@@ -89,7 +89,7 @@ class ReactFlagsSelect extends Component {
 				{this.state.openOptions &&
 					<div ref="flagOptions" style={{fontSize: `${optionsSize}px`}} className={`flag-options ${alignClass}`}>
 						{this.state.countries.map( countryCode => 
-							<div className="flag-option" key={countryCode} onClick={() => this.onSelect(countryCode)}>
+							<div className={`flag-option ${this.props.showOptionLabel ? 'has-label' : ''}`} key={countryCode} onClick={() => this.onSelect(countryCode)}>
 								<span className="country-flag" style={{width: `${optionsSize}px`, height: `${optionsSize}px`}} >
 									<img src={require(`../flags/${countryCode.toLowerCase()}.svg`)} />
 									{this.props.showOptionLabel &&

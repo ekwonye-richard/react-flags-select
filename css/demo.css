@@ -14,7 +14,6 @@ hr {
   height: 1px;
   border: 0;
   border-top: 1px solid #ccc;
-  margin: 1em 0;
   padding: 0; }
 
 textarea {
@@ -47,9 +46,31 @@ body {
   font-weight: 300; }
 
 .main {
-  padding: 15px; }
+  padding: 15px;
+  width: 800px;
+  max-width: 100%;
+  margin: 20px auto 200px auto;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc; }
+
+.info {
+  font-style: italic;
+  font-weight: 300;
+  color: #1b83b7; }
 
 .section-header {
-  font-size: 1.8em;
-  font-weight: 300;
-  margin: 10px 0; }
+  font-size: 1.2em;
+  font-weight: 400;
+  margin-top: 15px; }
+
+.demo-group {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px; }
+  .demo-group-title {
+    font-size: 1.3em;
+    font-weight: 600; }
+
+.demo-source code {
+  padding-left: 15px;
+  margin-right: 15px; }

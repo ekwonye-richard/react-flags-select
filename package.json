@@ -32,7 +32,7 @@
     "nwb": "0.15.x",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "remarkable": "^1.7.1"
+    "react-syntax-highlight": "0.0.6"
   },
   "repository": {
     "type": "git",
