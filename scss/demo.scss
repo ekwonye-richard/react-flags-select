@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600');
+$alt: #3a3a3a;
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection,
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.centered {
+    text-align: center;
+}
+
+a {
+    &.btn-link {
+        text-decoration: none;
+    }
+}
+
+body {
+    margin: 0;
+    font-family: Open Sans;
+}
+
+.header {
+    background: #3a3a3a;
+    text-align: center;
+    color: #ffffff;
+    padding: 25px 0;
+}
+
+.title {
+    font-size: 1.6em;
+    font-weight: 300;
+}
+
+.main {
+    padding: 15px;
+}
+
+.section-header {
+    font-size: 1.8em;
+    font-weight: 300;
+    margin: 10px 0;
+}
