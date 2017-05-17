@@ -1,6 +1,6 @@
 {
   "name": "react-flags-select",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "react-flags-select React component",
   "main": "lib/index.js",
   "module": "es/index.js",
