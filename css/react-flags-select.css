@@ -37,7 +37,7 @@
     padding: 8px 0;
     max-height: 160px;
     overflow: auto; }
-    .flag-select .flag-options.to--right {
+    .flag-select .flag-options.to--left {
       right: 10px; }
   .flag-select .flag-option {
     cursor: pointer;

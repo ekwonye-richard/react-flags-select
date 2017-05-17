@@ -138,11 +138,11 @@ You can pass a style className that will be attached to the top-level `div` of t
 
 ### Align Options
 
-You can align the options dropdown to  either left or right. The default value is left.
+You can align the options dropdown to  either left or right. The default value is right.
 
 ```javascript
     <ReactFlagsSelect
-    alignOptions="right" />
+    alignOptions="left" />
 ```
 
 ### Disabled

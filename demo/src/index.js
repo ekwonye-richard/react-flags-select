@@ -146,10 +146,10 @@ class Demo extends React.Component {
 							<span>Align Options</span>
 						</div>
 						<div className="demo-source">
-							<Highlight lang={'js'} value={'<ReactFlagsSelect \n alignOptions="right" />'} />
+							<Highlight lang={'js'} value={'<ReactFlagsSelect \n alignOptions="left" />'} />
 						</div>
 						<ReactFlagsSelect
-					    alignOptions="right" />
+					    alignOptions="left" />
 					</div>
 					<div className="demo-group">
 						<div className="demo-group-title">

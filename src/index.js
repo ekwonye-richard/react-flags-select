@@ -66,7 +66,7 @@ class ReactFlagsSelect extends Component {
 		let isSelected = this.state.selected || this.state.defaultCountry;
 		let selectedSize = this.props.selectedSize;
 		let optionsSize = this.props.optionsSize;
-		let alignClass = this.props.alignOptions.toLowerCase() === 'right' ? 'to--right' : '';
+		let alignClass = this.props.alignOptions.toLowerCase() === 'left' ? 'to--left' : '';
 
 		return (
 			<div className={`flag-select ${this.props.className ? this.props.className :  ""}`}>
@@ -111,7 +111,7 @@ ReactFlagsSelect.defaultProps = {
 	placeholder: "Select a country",
 	showSelectedLabel: true,
 	showOptionLabel: true,
-	alignOptions: 'left',
+	alignOptions: "right",
 	customLabels: [],
 	disabled: false
 }
