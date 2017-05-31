@@ -42,16 +42,6 @@ class Demo extends React.Component {
 					</div>
 					<div className="demo-group">
 						<div className="demo-group-title">
-							<span>Searchable</span>
-						</div>
-						<div className="demo-source">
-							<Highlight lang={'js'} value={'<ReactFlagsSelect \n searchable={true} />'} />
-						</div>
-						<ReactFlagsSelect
-						searchable={true} />
-					</div>
-					<div className="demo-group">
-						<div className="demo-group-title">
 							<span>Countries</span>
 						</div>
 						<div className="demo-source">
@@ -60,18 +50,6 @@ class Demo extends React.Component {
 						<ReactFlagsSelect
 					    countries={["US", "GB", "FR", "DE", "IT", "NG"]} />
 					</div>
-
-					<div className="demo-group">
-						<div className="demo-group-title">
-							<span>Countries (BlackList)</span>
-						</div>
-						<div className="demo-source">
-							<Highlight lang={'js'} value={'<ReactFlagsSelect \n countries={["US", "GB", "FR", "DE", "IT", "NG"]} blackList={true}/>'} />
-						</div>
-						<ReactFlagsSelect
-					    countries={["US", "GB", "FR", "DE", "IT", "NG"]} blackList={true}/>
-					</div>
-
 					<div className="demo-group">
 						<div className="demo-group-title">
 							<span>Custom Labels</span>
