@@ -44,13 +44,29 @@ You can select a default country to be rendered.
     defaultCountry="US" />
 ```
 
+### Searchable
+
+You can enable search filter using prop `searchable`.
+
+```javascript
+    <ReactFlagsSelect
+        searchable={true}/>
+```
+
+
 ### Countries
 
-You can use an array of countries rather than the full list of countries.
+You can use an array of countries rather than the full list of countries. 
 
 ```javascript
     <ReactFlagsSelect
     countries={["US", "GB", "FR", "DE", "IT", "NG"]} />
+```
+or create a black list of countries 
+
+```javascript
+    <ReactFlagsSelect
+    countries={["US", "GB", "FR", "DE", "IT", "NG"]} blackList={true} />
 ```
 
 ### Custom Labels
