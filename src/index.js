@@ -9,30 +9,19 @@ class ReactFlagsSelect extends Component {
 		let fullCountries = Object.keys(countries);
 
 		let selectCountries = this.props.countries && this.props.countries.filter( country => {
-			return countries[country] ;
+			return countries[country];
 		});
-
-
-		//Filter BlackList
-		selectCountries = !this.props.blackList ? selectCountries : fullCountries.filter(countryKey =>{
-				return selectCountries.filter(country =>{
-					return countryKey === country;
-				}).length === 0
-		});
-
 		let defaultCountry = countries[this.props.defaultCountry] && this.props.defaultCountry;
 
 		this.state = {
 			openOptions: false,
 			countries: selectCountries || fullCountries,
-			defaultCountry: defaultCountry,
-			filteredCountries: []
+			defaultCountry: defaultCountry
 		}
 
 		this.toggleOptions = this.toggleOptions.bind(this);
 		this.closeOptions = this.closeOptions.bind(this);
 		this.onSelect = this.onSelect.bind(this);
-		this.filterSearch = this.filterSearch.bind(this);
 	}
 
 	toggleOptions() {
@@ -42,7 +31,7 @@ class ReactFlagsSelect extends Component {
 	}
 
 	closeOptions(event) {
-		if (event.target !== this.refs.selectedFlag && event.target !== this.refs.flagOptions && event.target !== this.refs.filterText ) {
+		if (event.target !== this.refs.selectedFlag && event.target !== this.refs.flagOptions ) {
 			this.setState({
 				openOptions: false
 			});
@@ -51,8 +40,7 @@ class ReactFlagsSelect extends Component {
 
 	onSelect(countryCode) {
 		this.setState({
-			selected: countryCode, 
-			filter : ''
+			selected: countryCode
 		})
 		this.props.onSelect && this.props.onSelect(countryCode);
 	}
@@ -63,16 +51,6 @@ class ReactFlagsSelect extends Component {
 		isValid && this.setState({
 			selected: countryCode
 		})
-	}
-
-	filterSearch(evt) {
-		let filterValue = evt.target.value;
-		let filteredCountries = filterValue && this.state.countries.filter(key => {
-			let label = this.props.customLabels[key] || countries[key];
-			return  label && label.match(new RegExp(filterValue, 'i'))
-		}) ; 
-		console.log(filteredCountries);
-		this.setState({filter : filterValue, filteredCountries : filteredCountries });
 	}
 
 	componentDidMount() {
@@ -110,13 +88,7 @@ class ReactFlagsSelect extends Component {
 
 				{this.state.openOptions &&
 					<div ref="flagOptions" style={{fontSize: `${optionsSize}px`}} className={`flag-options ${alignClass}`}>
-						{this.props.searchable &&
-							<div className="filterBox">
-								<input type="text" placeholder="Search" ref="filterText"  onChange={this.filterSearch}/>
-							</div>
-						}
-						{(this.state.filter ? this.state.filteredCountries : this.state.countries).map( countryCode => 
-						
+						{this.state.countries.map( countryCode => 
 							<div className={`flag-option ${this.props.showOptionLabel ? 'has-label' : ''}`} key={countryCode} onClick={() => this.onSelect(countryCode)}>
 								<span className="country-flag" style={{width: `${optionsSize}px`, height: `${optionsSize}px`}} >
 									<img src={require(`../flags/${countryCode.toLowerCase()}.svg`)} />
@@ -141,14 +113,11 @@ ReactFlagsSelect.defaultProps = {
 	showOptionLabel: true,
 	alignOptions: "right",
 	customLabels: [],
-	disabled: false,
-	blackList: false,
-	searchable: false
+	disabled: false
 }
 
 ReactFlagsSelect.propsType = {
 	countries: PropTypes.array,
-	blackList: PropTypes.bool,
 	customLabels: PropTypes.array,
 	selectedSize: PropTypes.number,
 	optionsSize: PropTypes.number,
@@ -159,8 +128,7 @@ ReactFlagsSelect.propsType = {
 	showOptionLabel: PropTypes.bool,
 	alignOptions: PropTypes.string,
 	onSelect: PropTypes.func,
-	disabled: PropTypes.bool,
-	searchable: PropTypes.bool
+	disabled: PropTypes.bool
 }
 
 export default ReactFlagsSelect;
