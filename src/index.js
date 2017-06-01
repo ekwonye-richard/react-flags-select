@@ -71,7 +71,7 @@ class ReactFlagsSelect extends Component {
 			let label = this.props.customLabels[key] || countries[key];
 			return  label && label.match(new RegExp(filterValue, 'i'))
 		}) ;
-		console.log(filteredCountries);
+
 		this.setState({filter : filterValue, filteredCountries : filteredCountries });
 	}
 
