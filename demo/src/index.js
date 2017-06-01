@@ -66,7 +66,7 @@ class Demo extends React.Component {
 							<span>Countries (BlackList)</span>
 						</div>
 						<div className="demo-source">
-							<Highlight lang={'js'} value={'<ReactFlagsSelect \n countries={["US", "GB", "FR", "DE", "IT", "NG"]} blackList={true}/>'} />
+							<Highlight lang={'js'} value={'<ReactFlagsSelect \n countries={["US", "GB", "FR", "DE", "IT", "NG"]} \n blackList={true} />'} />
 						</div>
 						<ReactFlagsSelect
 					    countries={["US", "GB", "FR", "DE", "IT", "NG"]} blackList={true}/>
