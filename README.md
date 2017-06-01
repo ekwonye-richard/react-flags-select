@@ -50,7 +50,7 @@ You can enable search filter using prop `searchable`.
 
 ```javascript
     <ReactFlagsSelect
-        searchable={true}/>
+    searchable={true}/>
 ```
 
 
@@ -66,7 +66,8 @@ or create a black list of countries
 
 ```javascript
     <ReactFlagsSelect
-    countries={["US", "GB", "FR", "DE", "IT", "NG"]} blackList={true} />
+    countries={["US", "GB", "FR", "DE", "IT", "NG"]}
+    blackList={true} />
 ```
 
 ### Custom Labels

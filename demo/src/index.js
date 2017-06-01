@@ -69,7 +69,8 @@ class Demo extends React.Component {
 							<Highlight lang={'js'} value={'<ReactFlagsSelect \n countries={["US", "GB", "FR", "DE", "IT", "NG"]} \n blackList={true} />'} />
 						</div>
 						<ReactFlagsSelect
-					    countries={["US", "GB", "FR", "DE", "IT", "NG"]} blackList={true}/>
+					    countries={["US", "GB", "FR", "DE", "IT", "NG"]}
+					    blackList={true} />
 					</div>
 
 					<div className="demo-group">
