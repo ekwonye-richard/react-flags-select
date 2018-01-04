@@ -67,6 +67,10 @@
         input {
             width: 90%;
             margin: 0 4%;
+
+            &:focus {
+                outline: none
+            }
         }
     }
     .arrow-down {

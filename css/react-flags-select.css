@@ -55,6 +55,8 @@
     .flag-select .filterBox input {
       width: 90%;
       margin: 0 4%; }
+    .flag-select .filterBox input:focus {
+      outline: none; }
   .flag-select .arrow-down {
     color: #4d4d4d;
     padding: 2px; }
