@@ -41,6 +41,20 @@ class ReactFlagsSelect extends Component {
 		});
 	}
 
+	toggleOptionsWithKeyboard(evt) {
+		evt.preventDefault();
+		if (evt.keyCode === 13) {
+			//enter key: toggle options
+			this.toggleOptions();
+		} else if (evt.keyCode === 27) {
+			//esc key: hide options
+			!this.state.disabled && this.setState({
+				openOptions: false
+			});
+		}
+
+	}
+
 	closeOptions(event) {
 		if (event.target !== this.refs.selectedFlag && event.target !== this.refs.flagOptions && event.target !== this.refs.filterText ) {
 			this.setState({
@@ -55,6 +69,18 @@ class ReactFlagsSelect extends Component {
 			filter : ''
 		})
 		this.props.onSelect && this.props.onSelect(countryCode);
+	}
+
+	onSelectWithKeyboard(evt, countryCode) {
+		evt.preventDefault();
+		if (evt.keyCode === 13) {
+			//enter key: select
+			this.onSelect(countryCode);
+			this.closeOptions(evt);
+		} else if (evt.keyCode === 27) {
+			//esc key: hide options
+			this.toggleOptions();
+		}
 	}
 
 	updateSelected(countryCode) {
@@ -92,7 +118,7 @@ class ReactFlagsSelect extends Component {
 
 		return (
 			<div className={`flag-select ${this.props.className ? this.props.className :  ""}`}>
-				<div ref="selectedFlag" style={{fontSize: `${selectedSize}px`}} className={`selected--flag--option ${this.props.disabled ? 'no--focus' : ''}`} onClick={this.toggleOptions}>
+				<div ref="selectedFlag" style={{fontSize: `${selectedSize}px`}} className={`selected--flag--option ${this.props.disabled ? 'no--focus' : ''}`} tabIndex="0" onClick={this.toggleOptions} onKeyUp={evt => this.toggleOptionsWithKeyboard(evt)}>
 					{isSelected &&
 						<span className="country-flag" style={{width: `${selectedSize}px`, height: `${selectedSize}px`}} >
 							<img src={require(`../flags/${isSelected.toLowerCase()}.svg`)} />
@@ -117,7 +143,7 @@ class ReactFlagsSelect extends Component {
 						}
 						{(this.state.filter ? this.state.filteredCountries : this.state.countries).map( countryCode =>
 
-							<div className={`flag-option ${this.props.showOptionLabel ? 'has-label' : ''}`} key={countryCode} onClick={() => this.onSelect(countryCode)}>
+							<div className={`flag-option ${this.props.showOptionLabel ? 'has-label' : ''}`} key={countryCode} tabIndex="0" onClick={() => this.onSelect(countryCode)} onKeyUp={evt => this.onSelectWithKeyboard(evt, countryCode)}>
 								<span className="country-flag" style={{width: `${optionsSize}px`, height: `${optionsSize}px`}} >
 									<img src={require(`../flags/${countryCode.toLowerCase()}.svg`)} />
 									{this.props.showOptionLabel &&
