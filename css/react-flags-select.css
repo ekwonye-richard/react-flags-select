@@ -20,6 +20,8 @@
       height: 100%;
       position: absolute;
       z-index: 999; }
+    .flag-select .selected--flag--option:focus {
+      outline: none; }
     .flag-select .selected--flag--option .country-label {
       padding-left: 9px; }
   .flag-select .country-flag {
@@ -48,6 +50,9 @@
       padding: 0px 20px 3px 8px; }
     .flag-select .flag-option:hover {
       background: #eaeaea; }
+    .flag-select .flag-option:focus {
+      outline: none;
+      background: #eaeaea; }
     .flag-select .flag-option .country-label {
       padding: 0 9px; }
   .flag-select .filterBox {
@@ -55,8 +60,8 @@
     .flag-select .filterBox input {
       width: 90%;
       margin: 0 4%; }
-    .flag-select .filterBox input:focus {
-      outline: none; }
+      .flag-select .filterBox input:focus {
+        outline: none; }
   .flag-select .arrow-down {
     color: #4d4d4d;
     padding: 2px; }
