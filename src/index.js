@@ -172,7 +172,7 @@ ReactFlagsSelect.defaultProps = {
 	searchable: false
 }
 
-ReactFlagsSelect.propsType = {
+ReactFlagsSelect.propTypes = {
 	countries: PropTypes.array,
 	blackList: PropTypes.bool,
 	customLabels: PropTypes.array,
