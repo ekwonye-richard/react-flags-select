@@ -166,7 +166,7 @@ ReactFlagsSelect.defaultProps = {
 	showSelectedLabel: true,
 	showOptionLabel: true,
 	alignOptions: "right",
-	customLabels: [],
+	customLabels: {},
 	disabled: false,
 	blackList: false,
 	searchable: false
@@ -175,7 +175,7 @@ ReactFlagsSelect.defaultProps = {
 ReactFlagsSelect.propTypes = {
 	countries: PropTypes.array,
 	blackList: PropTypes.bool,
-	customLabels: PropTypes.array,
+	customLabels: PropTypes.object,
 	selectedSize: PropTypes.number,
 	optionsSize: PropTypes.number,
 	defaultCountry: PropTypes.string,
