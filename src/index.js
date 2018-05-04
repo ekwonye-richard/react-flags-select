@@ -35,7 +35,8 @@ class ReactFlagsSelect extends Component {
 		this.filterSearch = this.filterSearch.bind(this);
 	}
 
-	toggleOptions() {
+	toggleOptions(event) {
+		event.preventDefault();
 		!this.state.disabled && this.setState({
 			openOptions: !this.state.openOptions
 		});
@@ -56,7 +57,13 @@ class ReactFlagsSelect extends Component {
 	}
 
 	closeOptions(event) {
-		if (event.target !== this.refs.selectedFlag && event.target !== this.refs.flagOptions && event.target !== this.refs.filterText ) {
+		if (event.target !== this.refs.selectedFlag &&
+			  event.target !== this.refs.flagOptions &&
+			  event.target !== this.refs.filterText &&
+			  event.target !== this.refs.countryFlag &&
+			  event.target !== this.refs.countryFlagImg &&
+			  event.target !== this.refs.countryLabel &&
+			  event.target !== this.refs.carat) {
 			this.setState({
 				openOptions: false
 			});
@@ -120,18 +127,18 @@ class ReactFlagsSelect extends Component {
 			<div className={`flag-select ${this.props.className ? this.props.className :  ""}`}>
 				<div ref="selectedFlag" style={{fontSize: `${selectedSize}px`}} className={`selected--flag--option ${this.props.disabled ? 'no--focus' : ''}`} tabIndex="0" onClick={this.toggleOptions} onKeyUp={evt => this.toggleOptionsWithKeyboard(evt)}>
 					{isSelected &&
-						<span className="country-flag" style={{width: `${selectedSize}px`, height: `${selectedSize}px`}} >
-							<img src={require(`../flags/${isSelected.toLowerCase()}.svg`)} />
+						<span ref="countryFlag" className="country-flag" style={{width: `${selectedSize}px`, height: `${selectedSize}px`}} >
+							<img ref="countryFlagImg" src={require(`../flags/${isSelected.toLowerCase()}.svg`)} />
 							{this.props.showSelectedLabel &&
-								<span className="country-label">{ this.props.customLabels[isSelected] || countries[isSelected] }</span>
+								<span className="country-label" ref="countryLabel">{ this.props.customLabels[isSelected] || countries[isSelected] }</span>
 							}
 						</span>
 					}
 
 					{!isSelected &&
-						<span className="country-label">{this.props.placeholder}</span>
+						<span className="country-label" ref="countryLabel">{this.props.placeholder}</span>
 					}
-					<span className={`arrow-down ${this.props.disabled ? 'hidden' : ''}`}>▾</span>
+					<span ref="carat" className={`arrow-down ${this.props.disabled ? 'hidden' : ''}`}>▾</span>
 				</div>
 
 				{this.state.openOptions &&
