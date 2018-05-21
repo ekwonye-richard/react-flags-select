@@ -6,26 +6,11 @@ class ReactFlagsSelect extends Component {
 	constructor(props){
 		super(props);
 
-		let fullCountries = Object.keys(countries);
-
-		let selectCountries = this.props.countries && this.props.countries.filter( country => {
-			return countries[country] ;
-		});
-
-
-		//Filter BlackList
-		selectCountries = !this.props.blackList ? selectCountries : fullCountries.filter(countryKey =>{
-				return selectCountries.filter(country =>{
-					return countryKey === country;
-				}).length === 0
-		});
-
-		let defaultCountry = countries[this.props.defaultCountry] && this.props.defaultCountry;
+		const defaultCountry = countries[this.props.defaultCountry] && this.props.defaultCountry;
 
 		this.state = {
 			openOptions: false,
-			countries: selectCountries || fullCountries,
-			defaultCountry: defaultCountry,
+			defaultCountry,
 			filteredCountries: []
 		}
 
@@ -33,6 +18,7 @@ class ReactFlagsSelect extends Component {
 		this.closeOptions = this.closeOptions.bind(this);
 		this.onSelect = this.onSelect.bind(this);
 		this.filterSearch = this.filterSearch.bind(this);
+		this.setCountries = this.setCountries.bind(this);
 	}
 
 	toggleOptions() {
@@ -101,8 +87,42 @@ class ReactFlagsSelect extends Component {
 		this.setState({filter : filterValue, filteredCountries : filteredCountries });
 	}
 
+	setCountries() {
+		const fullCountries = Object.keys(countries);
+
+		let selectCountries = this.props.countries && this.props.countries.filter( country => {
+			return countries[country] ;
+		});
+
+		//Filter BlackList
+		if (this.props.blackList && selectCountries) {
+			selectCountries = fullCountries.filter(countryKey =>{
+					return selectCountries.filter(country =>{
+						return countryKey === country;
+					}).length === 0
+			});
+		}
+
+		this.setState({
+			countries: selectCountries || fullCountries
+		}, ()=> {
+			const { selected } = this.state;
+
+			if (selected && !this.state.countries.includes(selected)) {
+				this.setState({ selected: null });
+			}
+		});
+	}
+
 	componentDidMount() {
+		this.setCountries();		
 		!this.props.disabled && window.addEventListener("click", this.closeOptions);
+	}
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.countries !== this.props.countries || prevProps.blackList !== this.props.blackList) {
+			this.setCountries();
+		}
 	}
 
 	componentWillUnmount() {
