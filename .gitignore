@@ -4,4 +4,4 @@
 /umd
 npm-debug.log*
 .DS_Store
-.icloud
+*.icloud
