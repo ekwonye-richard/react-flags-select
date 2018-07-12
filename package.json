@@ -29,7 +29,7 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
-    "nwb": "0.15.x",
+    "nwb": "^0.22.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-syntax-highlight": "0.0.6"

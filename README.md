@@ -50,7 +50,17 @@ You can enable search filter using prop `searchable`.
 
 ```javascript
     <ReactFlagsSelect
-    searchable={true}/>
+    searchable={true} />
+```
+
+### Search Placeholder
+
+You can set the placeholder text for search using prop `searchPlaceholder`.
+
+```javascript
+    <ReactFlagsSelect
+    searchable={true}
+    searchPlaceholder="Search for a country" />
 ```
 
 
