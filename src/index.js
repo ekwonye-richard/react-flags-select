@@ -158,7 +158,7 @@ class ReactFlagsSelect extends Component {
 					<div ref="flagOptions" style={{fontSize: `${optionsSize}px`}} className={`flag-options ${alignClass}`}>
 						{this.props.searchable &&
 							<div className="filterBox">
-								<input type="text" placeholder="Search" ref="filterText"  onChange={this.filterSearch}/>
+								<input type="text" placeholder={this.props.searchPlaceholder} ref="filterText"  onChange={this.filterSearch}/>
 							</div>
 						}
 						{(this.state.filter ? this.state.filteredCountries : this.state.countries).map( countryCode =>
@@ -189,7 +189,8 @@ ReactFlagsSelect.defaultProps = {
 	customLabels: {},
 	disabled: false,
 	blackList: false,
-	searchable: false
+	searchable: false,
+	searchPlaceholder: 'Search',
 }
 
 ReactFlagsSelect.propTypes = {
@@ -206,7 +207,8 @@ ReactFlagsSelect.propTypes = {
 	alignOptions: PropTypes.string,
 	onSelect: PropTypes.func,
 	disabled: PropTypes.bool,
-	searchable: PropTypes.bool
+	searchable: PropTypes.bool,
+	searchPlaceholder: PropTypes.string,
 }
 
 export default ReactFlagsSelect;

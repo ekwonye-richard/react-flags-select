@@ -52,6 +52,17 @@ class Demo extends React.Component {
 					</div>
 					<div className="demo-group">
 						<div className="demo-group-title">
+							<span>Searchable (with placeholder)</span>
+						</div>
+						<div className="demo-source">
+							<Highlight lang={'js'} value={'<ReactFlagsSelect \n searchable={true} \n searchPlaceholder="Search for a country" />'} />
+						</div>
+						<ReactFlagsSelect
+						searchable={true}
+						searchPlaceholder="Search for a country" />
+					</div>
+					<div className="demo-group">
+						<div className="demo-group-title">
 							<span>Countries</span>
 						</div>
 						<div className="demo-source">
