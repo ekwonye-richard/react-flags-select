@@ -21,17 +21,17 @@
     "test:watch": "nwb test-react --server"
   },
   "dependencies": {
-    "prop-types": "^15.5.8"
+    "prop-types": "^15.6.2"
   },
   "peerDependencies": {
     "react": "15.x"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^4.0.1",
     "nwb": "^0.23.0",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
     "react-syntax-highlight": "^15.3.1"
   },
   "repository": {
