@@ -29,10 +29,10 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0",
-    "nwb": "^0.22.0",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-syntax-highlight": "0.0.6"
+    "nwb": "^0.23.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-syntax-highlight": "^15.3.1"
   },
   "repository": {
     "type": "git",
