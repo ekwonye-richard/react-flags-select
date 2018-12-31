@@ -1,42 +1,7 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-<path style="fill:#82AFFF;" d="M503.172,423.724H8.828c-4.875,0-8.828-3.953-8.828-8.828V97.104c0-4.875,3.953-8.828,8.828-8.828
-	h494.345c4.875,0,8.828,3.953,8.828,8.828v317.792C512,419.772,508.047,423.724,503.172,423.724z"/>
-<rect y="229.517" style="fill:#464655;" width="511.999" height="52.965"/>
-<g>
-	<rect y="211.862" style="fill:#F5F5F5;" width="511.999" height="17.655"/>
-	<rect y="282.483" style="fill:#F5F5F5;" width="511.999" height="17.655"/>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+<svg width="512" height="336" viewBox="0 0 512 336" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none">
+    <path d="M503.172 335.724H8.828A8.829 8.829 0 0 1 0 326.896V9.104A8.829 8.829 0 0 1 8.828.276h494.345a8.829 8.829 0 0 1 8.828 8.828v317.792a8.83 8.83 0 0 1-8.829 8.828z" fill="#82AFFF"/>
+    <path fill="#464655" d="M0 141.517h511.999v52.965H0z"/>
+    <path d="M0 123.862h511.999v17.655H0zm0 70.621h511.999v17.655H0z" fill="#F5F5F5"/>
+  </g>
 </svg>

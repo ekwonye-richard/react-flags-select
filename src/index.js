@@ -115,7 +115,7 @@ class ReactFlagsSelect extends Component {
 	}
 
 	componentDidMount() {
-		this.setCountries();		
+		this.setCountries();
 		!this.props.disabled && window.addEventListener("click", this.closeOptions);
 	}
 
@@ -141,7 +141,7 @@ class ReactFlagsSelect extends Component {
 				<div ref="selectedFlag" style={{fontSize: `${selectedSize}px`}} className={`selected--flag--option ${this.props.disabled ? 'no--focus' : ''}`} tabIndex="0" onClick={this.toggleOptions} onKeyUp={evt => this.toggleOptionsWithKeyboard(evt)}>
 					{isSelected &&
 						<span className="country-flag" style={{width: `${selectedSize}px`, height: `${selectedSize}px`}} >
-							<img src={require(`../flags/${isSelected.toLowerCase()}.svg`)} />
+							<img src={require(`../flags/${isSelected.toLowerCase()}.svg`)} alt={isSelected}/>
 							{this.props.showSelectedLabel &&
 								<span className="country-label">{ this.props.customLabels[isSelected] || countries[isSelected] }</span>
 							}
