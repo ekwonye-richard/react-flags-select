@@ -22,6 +22,7 @@ export default ({
     "BJ": "Benin",
     "BM": "Bermuda",
     "BT": "Bhutan",
+    "BH":"Bahrain",
     "BO": "Bolivia, Plurinational State of",
     "BA": "Bosnia and Herzegovina",
     "BW": "Botswana",
