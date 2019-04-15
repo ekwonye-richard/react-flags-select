@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import countries from './countries';
 
 class ReactFlagsSelect extends Component {
@@ -151,7 +151,7 @@ class ReactFlagsSelect extends Component {
 					{!isSelected &&
 						<span className="country-label">{this.props.placeholder}</span>
 					}
-					<span className={`arrow-down ${(this.props.disabled || !this.props.showArrow) ? 'hidden' : ''}`}>▾</span>
+					<span className={`arrow-down ${this.props.disabled ? 'hidden' : ''}`}>▾</span>
 				</div>
 
 				{this.state.openOptions &&
@@ -188,7 +188,6 @@ ReactFlagsSelect.defaultProps = {
 	alignOptions: "right",
 	customLabels: {},
 	disabled: false,
-	showArrow: true,
 	blackList: false,
 	searchable: false,
 	searchPlaceholder: 'Search',
@@ -208,7 +207,6 @@ ReactFlagsSelect.propTypes = {
 	alignOptions: PropTypes.string,
 	onSelect: PropTypes.func,
 	disabled: PropTypes.bool,
-	showArrow: PropTypes.bool,
 	searchable: PropTypes.bool,
 	searchPlaceholder: PropTypes.string,
 }
