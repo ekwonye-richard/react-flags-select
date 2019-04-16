@@ -1,5 +1,5 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
 import countries from './countries';
 
 class ReactFlagsSelect extends Component {
@@ -78,11 +78,16 @@ class ReactFlagsSelect extends Component {
 	}
 
 	filterSearch(evt) {
-		let filterValue = evt.target.value;
-		let filteredCountries = filterValue && this.state.countries.filter(key => {
-			let label = this.props.customLabels[key] || countries[key];
-			return  label && label.match(new RegExp(filterValue, 'i'))
-		}) ;
+    let filterValue = evt.target.value;
+    let filteredCountries
+    if(typeof this.props.customFilter === 'function') {
+      filteredCountries = this.props.customFilter(filterValue)
+    } else {
+      filteredCountries = filterValue && this.state.countries.filter(key => {
+        let label = this.props.customLabels[key] || countries[key];
+        return  label && label.match(new RegExp(filterValue, 'i'))
+      }) ;
+    }
 
 		this.setState({filter : filterValue, filteredCountries : filteredCountries });
 	}
@@ -206,6 +211,7 @@ ReactFlagsSelect.propTypes = {
 	showOptionLabel: PropTypes.bool,
 	alignOptions: PropTypes.string,
 	onSelect: PropTypes.func,
+	customFilter: PropTypes.func,
 	disabled: PropTypes.bool,
 	searchable: PropTypes.bool,
 	searchPlaceholder: PropTypes.string,
