@@ -81,7 +81,7 @@ class ReactFlagsSelect extends Component {
     let filterValue = evt.target.value;
     let filteredCountries
     if(typeof this.props.customFilter === 'function') {
-      filteredCountries = this.props.customFilter(filterValue)
+      filteredCountries = this.props.customFilter(filterValue, this.state.countries)
     } else {
       filteredCountries = filterValue && this.state.countries.filter(key => {
         let label = this.props.customLabels[key] || countries[key];
