@@ -202,8 +202,8 @@ You can use onSelect event handler which fires each time an option is selected.
 
 ### customFilter
 
-You can use onSelect event handler which fires each time an option is selected.
-`onSelect(countryCode)`.
+You can use customFilter to filter the search results. You must return an array of the filtered country codes.
+`customFilter(searchValue, countryList, defaultLabels, customLabels)`.
 
 ```javascript
     //customFilter Method
