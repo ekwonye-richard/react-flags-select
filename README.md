@@ -211,28 +211,6 @@ You can use onSelect event handler which fires each time an option is selected.
     onSelect={this.onSelectFlag} />
 ```
 
-### customFilter
-
-You can use customFilter to filter the search results. You must return an array of the filtered country codes.
-`customFilter(searchValue, countryList, defaultLabels, customLabels)`.
-
-```javascript
-    //customFilter Method
-    customFilter(searchValue, countryList, defaultLabels, customLabels){
-        const filteredList = countryList.filter(country => {
-            // filter logic here
-            return true
-        });
-        return filteredList;
-    }
-    
-    //component render
-    <ReactFlagsSelect
-    defaultCountry="US"
-    customFilter={this.customFilter} />
-```
-
-
 ### updateSelected
 
 You can dynamically update the selected country on the component using `updateSelected()` method.
