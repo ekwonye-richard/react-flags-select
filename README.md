@@ -183,18 +183,6 @@ You can disable the options dropdown, however the selected country can be update
     disabled={true} />
 ```
 
-### Show Arrow
-
-You can hide or show the down arrow. The default value is true.
-
-```javascript
-<ReactFlagsSelect
-  defaultCountry="US"
-  showSelectedLabel={false}
-  showArrow={false}
-/>
-```
-
 ### onSelect
 
 You can use onSelect event handler which fires each time an option is selected.
@@ -211,6 +199,28 @@ You can use onSelect event handler which fires each time an option is selected.
     defaultCountry="US"
     onSelect={this.onSelectFlag} />
 ```
+
+### customFilter
+
+You can use customFilter to filter the search results. You must return an array of the filtered country codes.
+`customFilter(searchValue, countryList, defaultLabels, customLabels)`.
+
+```javascript
+    //customFilter Method
+    customFilter(searchValue, countryList, defaultLabels, customLabels){
+        const filteredList = countryList.filter(country => {
+            // filter logic here
+            return true
+        });
+        return filteredList;
+    }
+    
+    //component render
+    <ReactFlagsSelect
+    defaultCountry="US"
+    customFilter={this.customFilter} />
+```
+
 
 ### updateSelected
 
