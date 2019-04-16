@@ -78,16 +78,11 @@ class ReactFlagsSelect extends Component {
 	}
 
 	filterSearch(evt) {
-    let filterValue = evt.target.value;
-    let filteredCountries
-    if(typeof this.props.customFilter === 'function') {
-      filteredCountries = this.props.customFilter(filterValue)
-    } else {
-      filteredCountries = filterValue && this.state.countries.filter(key => {
-        let label = this.props.customLabels[key] || countries[key];
-        return  label && label.match(new RegExp(filterValue, 'i'))
-      }) ;
-    }
+		let filterValue = evt.target.value;
+		let filteredCountries = filterValue && this.state.countries.filter(key => {
+			let label = this.props.customLabels[key] || countries[key];
+			return  label && label.match(new RegExp(filterValue, 'i'))
+		}) ;
 
 		this.setState({filter : filterValue, filteredCountries : filteredCountries });
 	}
@@ -156,7 +151,7 @@ class ReactFlagsSelect extends Component {
 					{!isSelected &&
 						<span className="country-label">{this.props.placeholder}</span>
 					}
-					<span className={`arrow-down ${this.props.disabled ? 'hidden' : ''}`}>▾</span>
+					<span className={`arrow-down ${(this.props.disabled || !this.props.showArrow) ? 'hidden' : ''}`}>▾</span>
 				</div>
 
 				{this.state.openOptions &&
@@ -193,6 +188,7 @@ ReactFlagsSelect.defaultProps = {
 	alignOptions: "right",
 	customLabels: {},
 	disabled: false,
+	showArrow: true,
 	blackList: false,
 	searchable: false,
 	searchPlaceholder: 'Search',
@@ -211,8 +207,8 @@ ReactFlagsSelect.propTypes = {
 	showOptionLabel: PropTypes.bool,
 	alignOptions: PropTypes.string,
 	onSelect: PropTypes.func,
-	customFilter: PropTypes.func,
 	disabled: PropTypes.bool,
+	showArrow: PropTypes.bool,
 	searchable: PropTypes.bool,
 	searchPlaceholder: PropTypes.string,
 }
