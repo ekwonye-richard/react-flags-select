@@ -212,3 +212,7 @@ ReactFlagsSelect.propTypes = {
 }
 
 export default ReactFlagsSelect;
+
+export const  getCountryDisplayName = (contryCode) => {
+	return countries[contryCode.toUppercase()];
+};
