@@ -14,6 +14,7 @@ export default ({
     "AT": "Austria",
     "AZ": "Azerbaijan",
     "BS": "Bahamas",
+    "BH": "Bahrain", 
     "BD": "Bangladesh",
     "BB": "Barbados",
     "BY": "Belarus",
