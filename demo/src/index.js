@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import * as Highlight from 'react-syntax-highlight';
-import '../../scss/demo.scss';
+import './scss/demo.scss';
 import '../../scss/react-flags-select.scss';
 import 'highlight.js/styles/default.css';
 
