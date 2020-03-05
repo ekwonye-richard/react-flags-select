@@ -18,7 +18,8 @@
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "prepack": "cpy umd/main.css css --rename=react-flags-select.css"
   },
   "dependencies": {
     "prop-types": "^15.5.8"
@@ -27,12 +28,14 @@
     "react": "15.x"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-sass": "^3.1.0",
+    "cpy-cli": "^3.1.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
     "nwb": "^0.23.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-syntax-highlight": "0.0.6"
+    "react-syntax-highlight": "0.0.6",
+    "sass-loader": "^7.3.1"
   },
   "repository": {
     "type": "git",

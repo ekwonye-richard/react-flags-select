@@ -1,12 +1,11 @@
 import React from 'react'
-import {render} from 'react-dom'
-import '../../css/demo.css';
-import '../../css/react-flags-select.css';
+import { render } from 'react-dom'
+import * as Highlight from 'react-syntax-highlight';
+import './scss/demo.scss';
+import '../../scss/react-flags-select.scss';
 import 'highlight.js/styles/default.css';
 
-import ReactFlagsSelect from '../../src'
-
-let Highlight = require('react-syntax-highlight');
+import ReactFlagsSelect from '../../src';
 
 class Demo extends React.Component {
 	render() {
@@ -205,4 +204,4 @@ class Demo extends React.Component {
 
 
 
-render(<Demo/>, document.querySelector('#demo'))
+render(<Demo/>, document.querySelector('#demo'));
