@@ -135,6 +135,7 @@ class ReactFlagsSelect extends Component {
 		return (
 			<div className={`flag-select ${this.props.className ? this.props.className :  ""}`}>
 				<button
+					 type={this.props.buttonType}
 					 ref="selectedFlag"
 					 style={{fontSize: `${selectedSize}px`}}
 					 className="flag-select__btn"
@@ -207,6 +208,7 @@ ReactFlagsSelect.defaultProps = {
 	blackList: false,
 	searchable: false,
 	searchPlaceholder: 'Search',
+	buttonType: 'button',
 };
 
 ReactFlagsSelect.propTypes = {
@@ -225,6 +227,7 @@ ReactFlagsSelect.propTypes = {
 	disabled: PropTypes.bool,
 	searchable: PropTypes.bool,
 	searchPlaceholder: PropTypes.string,
+	buttonType: PropTypes.string,
 };
 
 export default ReactFlagsSelect;
