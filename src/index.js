@@ -21,7 +21,8 @@ class ReactFlagsSelect extends Component {
 		this.setCountries = this.setCountries.bind(this);
 	}
 
-	toggleOptions() {
+	toggleOptions(evt) {
+		evt.preventDefault();
 		!this.state.disabled && this.setState({
 			openOptions: !this.state.openOptions
 		});
