@@ -142,6 +142,7 @@ class ReactFlagsSelect extends Component {
 					 onKeyUp={evt => this.toggleOptionsWithKeyboard(evt)}
 					 disabled={this.props.disabled}
 					 id="select_flag_button"
+					 type={this.props.type}
 					 aria-haspopup="listbox"
 					 aria-expanded={this.state.openOptions}
 					 aria-labelledby="select_flag_button">
@@ -204,6 +205,7 @@ ReactFlagsSelect.defaultProps = {
 	alignOptions: "right",
 	customLabels: {},
 	disabled: false,
+	type: "button",
 	blackList: false,
 	searchable: false,
 	searchPlaceholder: 'Search',
@@ -223,6 +225,7 @@ ReactFlagsSelect.propTypes = {
 	alignOptions: PropTypes.string,
 	onSelect: PropTypes.func,
 	disabled: PropTypes.bool,
+	type: PropTypes.string,
 	searchable: PropTypes.bool,
 	searchPlaceholder: PropTypes.string,
 };
