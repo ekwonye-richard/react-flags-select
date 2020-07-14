@@ -192,7 +192,7 @@ export default ({
     "SE": "Sweden",
     "CH": "Switzerland",
     "SY": "Syria",
-    "TW": "Taiwan, Province of China",
+    "TW": "Taiwan",
     "TJ": "Tajikistan",
     "TZ": "Tanzania",
     "TH": "Thailand",
