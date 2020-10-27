@@ -86,8 +86,16 @@ You can use an object of countries labels to replace the countries name. The def
 
 ```javascript
     <ReactFlagsSelect
-    countries={["US", "GB", "FR","DE","IT"]}
-    customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}} />
+    countries={[{"US": "EN-US"}, {"GB": "EN-GB"}, {"FR": "FR"}, {"DE": "DE"}, {"IT": "IT"}]} />
+```
+
+### Custom Labels with multiple times the same country
+
+You can also show multiple times the same country but with a different label.
+
+```javascript
+    <ReactFlagsSelect
+    countries={[{"US": "EN-US"}, {"GB": "EN-GB"}, {"FR": "FR"}, {"BE": "FR"}, {"BE": "NL"}, {"IT": "IT"}]} />
 ```
 
 ### Placeholder
@@ -96,8 +104,7 @@ You can replace the default placeholder text.
 
 ```javascript
     <ReactFlagsSelect
-    countries={["US", "GB", "FR","DE","IT"]}
-    customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
+    countries={[{"US": "EN-US"}, {"GB": "EN-GB"}, {"FR": "FR"}, {"DE": "DE"}, {"IT": "IT"}]}
     placeholder="Select Language" />
 ```
 
@@ -107,8 +114,7 @@ You can hide or show the label of a selected flag. The default value is true.
 
 ```javascript
     <ReactFlagsSelect
-    countries={["US", "GB", "FR","DE","IT"]}
-    customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
+    countries={[{"US": "EN-US"}, {"GB": "EN-GB"}, {"FR": "FR"}, {"DE": "DE"}, {"IT": "IT"}]}
     placeholder="Select Language"
     showSelectedLabel={false} />
 ```
@@ -119,8 +125,7 @@ You can hide or show the label of the flags in the options dropdown. The default
 
 ```javascript
     <ReactFlagsSelect
-    countries={["US", "GB", "FR","DE","IT"]}
-    customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
+    countries={[{"US": "EN-US"}, {"GB": "EN-GB"}, {"FR": "FR"}, {"DE": "DE"}, {"IT": "IT"}]}
     placeholder="Select Language"
     showSelectedLabel={false}
     showOptionLabel={false} />
@@ -132,8 +137,7 @@ You can set the size in pixels for the svg flag and label of the selected option
 
 ```javascript
     <ReactFlagsSelect
-    countries={["US", "GB", "FR","DE","IT"]}
-    customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
+    countries={[{"US": "EN-US"}, {"GB": "EN-GB"}, {"FR": "FR"}, {"DE": "DE"}, {"IT": "IT"}]}
     placeholder="Select Language"
     showSelectedLabel={false}
     showOptionLabel={false}
@@ -145,8 +149,7 @@ You can set the size in pixels for the svg flag and label of the selected option
 You can set the size in pixels for the svg flags and labels in the options dropdown.
 ```javascript
     <ReactFlagsSelect
-    countries={["US", "GB", "FR","DE","IT"]}
-    customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
+    countries={[{"US": "EN-US"}, {"GB": "EN-GB"}, {"FR": "FR"}, {"DE": "DE"}, {"IT": "IT"}]}
     placeholder="Select Language"
     showSelectedLabel={false}
     showOptionLabel={false}
