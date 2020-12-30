@@ -4,3 +4,5 @@
 /umd
 npm-debug.log*
 /css/
+
+/src/components/Flags
