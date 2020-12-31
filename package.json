@@ -14,9 +14,9 @@
   ],
   "scripts": {
     "build": "",
-    "start": "nwb serve-react-demo",
+    "prestart": "npx @svgr/cli --icon -d src/components/Flags --ignore-existing flags",
+    "start": "start-storybook -p 6006",
     "test": "",
-    "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -32,9 +32,11 @@
     "@babel/core": "^7.12.10",
     "@storybook/addon-actions": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addon-knobs": "^6.1.11",
     "@storybook/addon-links": "^6.1.11",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.1.11",
+    "@svgr/cli": "^5.5.0",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
     "babel-loader": "^8.2.2",

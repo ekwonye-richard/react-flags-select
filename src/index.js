@@ -1,1 +1,1 @@
-export { default } from "./ReactFlagsSelect";
+export { default } from "./components/ReactFlagsSelect";

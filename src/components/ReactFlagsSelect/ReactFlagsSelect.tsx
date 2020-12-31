@@ -2,15 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 import cx from "classnames";
 
 import { countries as AllCountries } from "../../data";
-import { getCountryCodes } from "../../utils";
-import type { OnSelect, CountryCodes, CustomLabels } from "../../types";
+import { countryCodeToPascalCase, getCountryCodes } from "../../utils";
+import type { CountryCodes, CustomLabels, OnSelect } from "../../types";
+import * as flags from "../Flags";
 
 import styles from "./ReactFlagsSelect.module.scss";
+
+type Flags = typeof flags;
+type FlagKey = keyof Flags;
 
 type Props = {
   className?: string;
   selected?: string;
   onSelect: OnSelect;
+  selectButtonClassName?: string;
   showSelectedLabel?: boolean;
   showOptionLabel?: boolean;
   selectedSize?: number;
@@ -22,6 +27,7 @@ type Props = {
   alignOptionsToLeft?: boolean;
   countries?: CountryCodes;
   blacklistCountries?: boolean;
+  fullWidth?: boolean;
   disabled?: boolean;
   id?: string;
 };
@@ -30,6 +36,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
   className,
   selected = "",
   onSelect,
+  selectButtonClassName,
   showSelectedLabel = true,
   showOptionLabel = true,
   selectedSize = 16,
@@ -41,6 +48,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
   alignOptionsToLeft = false,
   countries,
   blacklistCountries = false,
+  fullWidth = true,
   disabled = false,
   id,
 }) => {
@@ -57,6 +65,14 @@ const ReactFlagsSelect: React.FC<Props> = ({
   const filterTextRef = useRef(null);
 
   const options = filterValue ? filteredCountriesOptions : countriesOptions;
+
+  const getFlag = (key: FlagKey): Flags[FlagKey] => flags[key];
+
+  const getSelectedFlag = (): React.ReactElement => {
+    const selectedFlagName = countryCodeToPascalCase(selected);
+    const SelectedFlag = getFlag(selectedFlagName as FlagKey);
+    return <SelectedFlag />;
+  };
 
   const toggleDropdown = (): void => setIsDropdownOpen(!isDropdownOpen);
 
@@ -125,11 +141,16 @@ const ReactFlagsSelect: React.FC<Props> = ({
   }, []);
 
   return (
-    <div className={cx(styles.flagsSelect, className)} id={id}>
+    <div
+      className={cx(styles.flagsSelect, className, {
+        [styles.flagsSelectInline]: !fullWidth,
+      })}
+      id={id}
+    >
       <button
         ref={selectedFlagRef}
         type="button"
-        className={styles.selectBtn}
+        className={cx(styles.selectBtn, selectButtonClassName)}
         style={{ fontSize: selectedSize }}
         onClick={toggleDropdown}
         onKeyUp={(e) => closeDropdwownWithKeyboard(e)}
@@ -140,11 +161,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
         <span className={styles.selectValue}>
           {selected ? (
             <>
-              {/* <img
-              className="flag-select__option__icon"
-              src={require(`../flags/${selected.toLowerCase()}.svg`)}
-              alt={selected}
-            /> */}
+              {getSelectedFlag()}
               {showSelectedLabel && (
                 <span className={styles.label}>
                   {customLabels[selected] || AllCountries[selected]}
@@ -163,7 +180,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
           ref={optionsRef}
           style={{ fontSize: optionsSize }}
           className={cx(styles.selectOptions, {
+            [styles.selectOptionsWithSearch]: searchable,
             [styles.alignOptionsToLeft]: alignOptionsToLeft,
+            [styles.fullWidthOptions]: fullWidth,
           })}
         >
           {searchable && (
@@ -177,36 +196,32 @@ const ReactFlagsSelect: React.FC<Props> = ({
               />
             </div>
           )}
-          {options.map((countryCode) => (
-            <li
-              key={countryCode}
-              role="option"
-              tabIndex={0}
-              className={cx(styles.selectOption, {
-                [styles.selectOptionWithlabel]: showOptionLabel,
-              })}
-              onClick={(): void => onOptionSelect(countryCode)}
-              onKeyUp={(e) => onSelectWithKeyboard(e, countryCode)}
-            >
-              <span
-                style={{
-                  width: optionsSize,
-                  height: optionsSize,
-                }}
+          {options.map((countryCode) => {
+            const countryFlagName = countryCodeToPascalCase(countryCode);
+            const CountryFlag = getFlag(countryFlagName as FlagKey);
+
+            return (
+              <li
+                key={countryCode}
+                role="option"
+                tabIndex={0}
+                className={cx(styles.selectOption, {
+                  [styles.selectOptionWithlabel]: showOptionLabel,
+                })}
+                onClick={(): void => onOptionSelect(countryCode)}
+                onKeyUp={(e) => onSelectWithKeyboard(e, countryCode)}
               >
-                {/* <img
-                  className="flag-select__option__icon"
-                  alt={`flag for ${countries[countryCode]}`}
-                  src={require(`../flags/${countryCode.toLowerCase()}.svg`)}
-                /> */}
-                {showOptionLabel && (
-                  <span className={styles.label}>
-                    {customLabels[countryCode] || AllCountries[countryCode]}
-                  </span>
-                )}
-              </span>
-            </li>
-          ))}
+                <span className={styles.selectOptionValue}>
+                  <CountryFlag />
+                  {showOptionLabel && (
+                    <span className={styles.label}>
+                      {customLabels[countryCode] || AllCountries[countryCode]}
+                    </span>
+                  )}
+                </span>
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

@@ -1,27 +1,36 @@
 $white: #ffffff;
-$text-color: #4d4d4d;
+$black: #4d4d4d;
+$gray: #eaeaea;
+$gray-alt: #bdbbbb;
 
 .flagsSelect {
   position: relative;
-  display: inline-block;
   vertical-align: inherit;
   padding-bottom: 5px;
   text-align: left;
 
-  .hidden {
-    display: none;
+  svg {
+    width: 1.2em;
+    height: 1.2em;
+    flex-shrink: 0;
   }
+}
 
-  .no--focus {
-    pointer-events: none;
-  }
+.flagsSelectInline {
+  display: inline-block;
 }
 
 .selectBtn {
   cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 5px 10px;
-  color: $text-color;
-  border: none;
+  font-family: inherit;
+  color: $black;
+  border: thin solid transparentize($black, 0.7);
+  border-radius: 4px;
   background: transparent;
 
   &:after,
@@ -30,12 +39,12 @@ $text-color: #4d4d4d;
     width: 0;
     height: 0;
     display: inline-block;
-    vertical-align: middle;
+    // vertical-align: middle;
     margin-left: 5px;
   }
 
   &:after {
-    border-top: 5px solid $text-color;
+    border-top: 5px solid $black;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-bottom: 0;
@@ -45,63 +54,54 @@ $text-color: #4d4d4d;
     border-top: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 5px solid $text-color;
-  }
-
-  &:before {
-    content: " ";
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 999;
+    border-bottom: 5px solid $black;
   }
 }
 
 .label {
   font-size: 1em;
-  position: relative;
-  padding-left: 9px;
+  padding-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .selectValue,
 .selectOption {
   cursor: pointer;
-  padding: 0 8px 3px 8px;
+  padding: 0 8px;
   margin: 4px 0;
   white-space: nowrap;
 }
 
 .selectValue {
-  height: inherit;
-  width: inherit;
-  display: inline-block;
-  vertical-align: middle;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
 }
 
 .selectOption {
+  padding: 2px 18px;
+
   &:hover,
   &:focus {
     outline: none;
-    background: #eaeaea;
-  }
-
-  &__icon {
-    width: 1.3em;
-    height: 1.3em;
-    position: relative;
-    top: 0.3em;
+    background: $gray;
   }
 }
 
+.selectOptionValue {
+  display: flex;
+  align-items: center;
+}
+
 .selectOptionWithlabel {
-  padding: 0 20px 3px 8px;
+  padding: 4px 10px;
 }
 
 .selectOptions {
   position: absolute;
   z-index: 999999;
-  border: 1px solid #bdbbbb;
+  border: 1px solid $gray-alt;
   border-radius: 3px;
   background: $white;
   margin-top: 8px;
@@ -110,16 +110,31 @@ $text-color: #4d4d4d;
   overflow: auto;
 }
 
+.selectOptionsWithSearch {
+  padding: 0 0 8px 0;
+}
+
+.fullWidthOptions {
+  right: 0;
+  left: 0;
+}
+
 .alignOptionsToLeft {
-  right: 5px;
+  right: 0;
 }
 
 .filterBox {
+  position: sticky;
+  top: 0;
   width: 100%;
+  padding-top: 8px;
+  background: $white;
 
   input {
-    width: 90%;
-    margin: 0 4%;
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    padding: 8px;
+    box-sizing: border-box;
 
     &:focus {
       outline: none;
