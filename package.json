@@ -2,22 +2,18 @@
   "name": "react-flags-select",
   "version": "1.1.13",
   "description": "react-flags-select React component",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "files": [
-    "css",
-    "scss",
-    "flags",
-    "es",
-    "lib",
-    "umd"
-  ],
+  "main": "build/index.js",
+  "module": "build/index.esm.js",
+  "files": ["build"],
   "scripts": {
-    "build": "",
-    "prestart": "npx @svgr/cli --icon -d src/components/Flags --ignore-existing flags",
+    "prebuild": "yarn gen-flag-components",
+    "build": "rollup -c",
+    "prestart": "yarn gen-flag-components",
     "start": "start-storybook -p 6006",
     "test": "",
-    "build-storybook": "build-storybook"
+    "prepublishOnly": "npm run build",
+    "build-storybook": "build-storybook",
+    "gen-flag-components": "npx @svgr/cli --icon -d src/components/Flags --ignore-existing flags"
   },
   "dependencies": {
     "@types/jest": "^26.0.19",
@@ -30,6 +26,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@rollup/plugin-babel": "^5.2.2",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.0.1",
     "@storybook/addon-actions": "^6.1.11",
     "@storybook/addon-essentials": "^6.1.11",
     "@storybook/addon-knobs": "^6.1.11",
@@ -45,9 +44,14 @@
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.22.0",
+    "postcss": "^8.2.2",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "rollup": "^2.35.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-typescript2": "^0.29.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0"
   },
