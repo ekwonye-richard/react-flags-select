@@ -8,14 +8,14 @@
     "build"
   ],
   "scripts": {
-    "prebuild": "yarn gen-flag-components",
+    "prebuild": "yarn gen-flags-components",
     "build": "rollup -c",
-    "prestart": "yarn gen-flag-components",
+    "prestart": "yarn gen-flags-components",
     "start": "start-storybook -p 6006",
     "test": "",
     "prepublishOnly": "npm run build",
     "build-storybook": "build-storybook",
-    "gen-flag-components": "npx @svgr/cli --icon -d src/components/Flags --ignore-existing flags"
+    "gen-flags-components": "npx @svgr/cli --icon -d src/components/Flags --ignore-existing flags"
   },
   "dependencies": {
     "@types/jest": "^26.0.19",

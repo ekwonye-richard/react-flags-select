@@ -13,7 +13,7 @@ type FlagKey = keyof Flags;
 
 type Props = {
   className?: string;
-  selected?: string;
+  selected: string;
   onSelect: OnSelect;
   selectButtonClassName?: string;
   showSelectedLabel?: boolean;
