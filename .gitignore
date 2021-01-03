@@ -1,8 +1,4 @@
-/coverage
-/es
 /node_modules
-/umd
+/build
 npm-debug.log*
-/css/
-
 /src/components/Flags
