@@ -1,56 +1,49 @@
 # react-flags-select
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
-
 A customizable svg flags select components for React Js.
 
 ## Demo and Example
 Live demo: [ekwonye-richard.github.io/react-flags-select/](https://ekwonye-richard.github.io/react-flags-select/)
 
 ## Installation
-The package can be installed via NPM:
+The package can be installed via NPM or YARN:
 ```
 npm install react-flags-select --save
+yarn add react-flags-select --save
 ```
 react-flags-select can be imported as follows
 
 ```javascript
 import ReactFlagsSelect from 'react-flags-select';
-
-//import css module
-import 'react-flags-select/css/react-flags-select.css';
-
-//OR import sass module
-import 'react-flags-select/scss/react-flags-select.scss';
-
 ```
 
 ## Usage
 
 ```javascript
-    <ReactFlagsSelect />
+    const [selected, setSelected] = useState("");
+    
+    <ReactFlagsSelect selected={selected} onSelect={code => setSelected(code)}/>
 ```
 
-All country Codes: [Country Codes](https://github.com/ekwonye-richard/react-flags-select/blob/master/src/countries.js)
+All country Codes: [Country Codes](https://github.com/ekwonye-richard/react-flags-select/blob/master/src/data/countries.ts)
 
-### Default Country
+### selected
 
-You can select a default country to be rendered.
+ReactFlagsSelect is a controlled input hence selected is a required prop that holds the current value of the input.
 
-```javascript
-    <ReactFlagsSelect
-    defaultCountry="US" />
-```
+### onSelect
+
+onSelect is a required prop which is a function which recieves the user selected countryCode, this countryCode should be used to update the selected value.
 
 ### Searchable
 
-You can enable search filter using prop `searchable`.
+You can enable search filter with the boolean `searchable` prop.
 
 ```javascript
     <ReactFlagsSelect
-    searchable={true} />
+        ...
+        searchable
+    />
 ```
 
 ### Search Placeholder
@@ -183,45 +176,5 @@ You can disable the options dropdown, however the selected country can be update
     disabled={true} />
 ```
 
-### onSelect
-
-You can use onSelect event handler which fires each time an option is selected.
-`onSelect(countryCode)`.
-
-```javascript
-    //onSelect Method
-    onSelectFlag(countryCode){
-        console.log(countryCode)
-    }
-    
-    //component render
-    <ReactFlagsSelect
-    defaultCountry="US"
-    onSelect={this.onSelectFlag} />
-```
-
-### updateSelected
-
-You can dynamically update the selected country on the component using `updateSelected()` method.
-
-```javascript
-    //updateSelected Method
-    this.refs.userFlag.updateSelected("UK")
-    
-    //component render
-    <ReactFlagsSelect
-    ref="userFlag"
-    defaultCountry="US" />
-```
-
 ## License
-MIT Licensed. Copyright (c) Richard Ekwonye 2017.
-
-[build-badge]: https://img.shields.io/travis/ekwonye-richard/react-flags-select/master.svg?style=flat-square
-[build]: https://travis-ci.org/ekwonye-richard/react-flags-select
-
-[npm-badge]: https://img.shields.io/npm/v/react-flags-select.svg?style=flat-square
-[npm]: https://www.npmjs.org/package/react-flags-select
-
-[coveralls-badge]: https://img.shields.io/coveralls/ekwonye-richard/react-flags-select/master.svg?style=flat-square
-[coveralls]: https://coveralls.io/github/ekwonye-richard/react-flags-select
+MIT Licensed. Copyright (c) Richard Ekwonye 2021.
