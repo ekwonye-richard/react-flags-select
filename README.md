@@ -4,6 +4,8 @@
 [![npm package][npm-badge]][npm]
 [![Coveralls][coveralls-badge]][coveralls]
 
+## 🚧 [V2 Beta](https://github.com/ekwonye-richard/react-flags-select/tree/beta)
+
 A customizable svg flags select components for React Js.
 
 ## Demo and Example
