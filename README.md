@@ -9,7 +9,7 @@ Live demo: [ekwonye-richard.github.io/react-flags-select/](https://ekwonye-richa
 The package can be installed via NPM or YARN:
 ```
 npm install react-flags-select --save
-yarn add react-flags-select --save
+yarn add react-flags-select
 ```
 react-flags-select can be imported as follows
 
