@@ -16,7 +16,7 @@
     "prestart": "yarn gen-flags-components",
     "start": "start-storybook -p 6006",
     "test": "",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "yarn build",
     "build-storybook": "build-storybook",
     "gen-flags-components": "npx @svgr/cli --icon -d src/components/Flags --ignore-existing flags"
   },
