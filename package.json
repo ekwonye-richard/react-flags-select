@@ -8,6 +8,9 @@
     "build"
   ],
   "scripts": {
+    "lint": "yarn check-types && yarn lint:js",
+    "check-types": "tsc --noEmit",
+    "lint:js": "eslint src --ext .js,.json,.ts,.tsx",
     "prebuild": "yarn gen-flags-components",
     "build": "rollup -c",
     "prestart": "yarn gen-flags-components",
@@ -32,6 +35,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
@@ -50,6 +55,7 @@
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.22.0",
+    "husky": "^4.3.6",
     "postcss": "^8.2.2",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
@@ -60,6 +66,12 @@
     "rollup-plugin-typescript2": "^0.29.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "repository": {
     "type": "git",
