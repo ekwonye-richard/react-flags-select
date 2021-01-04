@@ -1,6 +1,6 @@
 {
   "name": "react-flags-select",
-  "version": "2.0.0-beta.3",
+  "version": "2.0.0-beta.4",
   "description": "react-flags-select React component",
   "main": "build/index.js",
   "module": "build/index.esm.js",
@@ -21,13 +21,7 @@
     "gen-flags-components": "node_modules/@svgr/cli/bin/svgr --icon -d src/components/Flags --ignore-existing flags"
   },
   "dependencies": {
-    "@types/jest": "^26.0.19",
-    "@types/node": "^14.14.16",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "classnames": "^2.2.6",
-    "node-sass": "^5.0.0",
-    "typescript": "^4.1.3"
+    "classnames": "^2.2.6"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
@@ -47,6 +41,10 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.1.11",
     "@svgr/cli": "^5.5.0",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.16",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
     "babel-loader": "^8.2.2",
@@ -56,6 +54,7 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.22.0",
     "husky": "^4.3.6",
+    "node-sass": "^5.0.0",
     "postcss": "^8.2.2",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
@@ -65,7 +64,8 @@
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-typescript2": "^0.29.0",
     "sass-loader": "^10.1.0",
-    "style-loader": "^2.0.0"
+    "style-loader": "^2.0.0",
+    "typescript": "^4.1.3"
   },
   "husky": {
     "hooks": {
