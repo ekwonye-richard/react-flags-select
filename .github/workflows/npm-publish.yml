@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+    branches:
+      - beta
 
 jobs:
   publish:
@@ -8,8 +11,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
-      - run: npm install
-      # - run: npm test
+      - run: yarn install
+      # - run: yarn test
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
