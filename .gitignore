@@ -2,3 +2,4 @@
 /build
 npm-debug.log*
 /src/components/Flags
+/storybook-static
