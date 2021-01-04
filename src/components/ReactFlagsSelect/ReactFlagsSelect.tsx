@@ -179,7 +179,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
         <span className={styles.selectValue}>
           {validSelectedValue ? (
             <>
-              {getSelectedFlag()}
+              <span className={styles.selectFlag}>{getSelectedFlag()}</span>
               {showSelectedLabel && (
                 <span className={styles.label}>
                   {getLabel(validSelectedValue)}
@@ -231,7 +231,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
                 onKeyUp={(e) => onSelectWithKeyboard(e, countryCode)}
               >
                 <span className={styles.selectOptionValue}>
-                  <CountryFlag />
+                  <span className={styles.selectFlag}>
+                    <CountryFlag />
+                  </span>
                   {showOptionLabel && (
                     <span className={styles.label}>
                       {getLabel(countryCode)}

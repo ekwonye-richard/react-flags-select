@@ -8,12 +8,6 @@ $gray-alt: #bdbbbb;
   vertical-align: inherit;
   padding-bottom: 5px;
   text-align: left;
-
-  svg {
-    width: 1.2em;
-    height: 1.2em;
-    flex-shrink: 0;
-  }
 }
 
 .flagsSelectInline {
@@ -39,7 +33,6 @@ $gray-alt: #bdbbbb;
     width: 0;
     height: 0;
     display: inline-block;
-    // vertical-align: middle;
     margin-left: 5px;
   }
 
@@ -92,6 +85,11 @@ $gray-alt: #bdbbbb;
     outline: none;
     background: $gray;
   }
+}
+
+.selectFlag {
+  display: inline-flex;
+  font-size: 1.2em;
 }
 
 .selectOptionValue {
