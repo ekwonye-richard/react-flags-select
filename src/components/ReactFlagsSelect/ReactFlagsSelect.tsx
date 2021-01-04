@@ -8,6 +8,9 @@ import * as flags from "../Flags";
 
 import styles from "./ReactFlagsSelect.module.scss";
 
+const defaultPlaceholder = "Select a country";
+const defaultSearchPlaceholder = "Search";
+
 type Flags = typeof flags;
 type FlagKey = keyof Flags;
 
@@ -42,9 +45,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
   selectedSize = 16,
   optionsSize = 14,
   customLabels = {},
-  placeholder = "Select a country",
+  placeholder,
   searchable = false,
-  searchPlaceholder = "Search",
+  searchPlaceholder,
   alignOptionsToLeft = false,
   countries,
   blacklistCountries = false,
@@ -64,14 +67,22 @@ const ReactFlagsSelect: React.FC<Props> = ({
   const optionsRef = useRef(null);
   const filterTextRef = useRef(null);
 
+  const validSelectedValue = countriesOptions.includes(selected)
+    ? selected
+    : "";
+
   const options = filterValue ? filteredCountriesOptions : countriesOptions;
 
   const getFlag = (key: FlagKey): Flags[FlagKey] => flags[key];
 
   const getSelectedFlag = (): React.ReactElement => {
-    const selectedFlagName = countryCodeToPascalCase(selected);
+    const selectedFlagName = countryCodeToPascalCase(validSelectedValue);
     const SelectedFlag = getFlag(selectedFlagName as FlagKey);
     return <SelectedFlag />;
+  };
+
+  const getLabel = (countryCode: string) => {
+    return customLabels[countryCode] || AllCountries[countryCode];
   };
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -91,7 +102,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
     }
 
     const filteredCountriesOptions = countriesOptions.filter((key) => {
-      const label = customLabels[key] || AllCountries[key];
+      const label = getLabel(key);
       return label && label.match(new RegExp(value, "i"));
     });
 
@@ -133,6 +144,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
 
   useEffect(() => {
     setCountriesOptions(getCountryCodes(countries, blacklistCountries));
+  }, [countries, blacklistCountries]);
+
+  useEffect(() => {
     window.addEventListener("click", closeDropdown);
 
     return () => {
@@ -151,7 +165,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
         ref={selectedFlagRef}
         id="rfs_btn"
         type="button"
-        className={cx(styles.selectBtn, selectButtonClassName)}
+        className={cx(styles.selectBtn, selectButtonClassName, {
+          [styles.disabledBtn]: disabled,
+        })}
         style={{ fontSize: selectedSize }}
         onClick={toggleDropdown}
         onKeyUp={(e) => closeDropdwownWithKeyboard(e)}
@@ -161,21 +177,21 @@ const ReactFlagsSelect: React.FC<Props> = ({
         aria-expanded={isDropdownOpen}
       >
         <span className={styles.selectValue}>
-          {selected ? (
+          {validSelectedValue ? (
             <>
               {getSelectedFlag()}
               {showSelectedLabel && (
                 <span className={styles.label}>
-                  {customLabels[selected] || AllCountries[selected]}
+                  {getLabel(validSelectedValue)}
                 </span>
               )}
             </>
           ) : (
-            <>{placeholder}</>
+            <>{placeholder || defaultPlaceholder}</>
           )}
         </span>
       </button>
-      {isDropdownOpen && (
+      {!disabled && isDropdownOpen && (
         <ul
           tabIndex={-1}
           role="listbox"
@@ -192,7 +208,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
               <input
                 type="text"
                 value={filterValue}
-                placeholder={searchPlaceholder}
+                placeholder={searchPlaceholder || defaultSearchPlaceholder}
                 ref={filterTextRef}
                 onChange={filterSearch}
               />
@@ -218,7 +234,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
                   <CountryFlag />
                   {showOptionLabel && (
                     <span className={styles.label}>
-                      {customLabels[countryCode] || AllCountries[countryCode]}
+                      {getLabel(countryCode)}
                     </span>
                   )}
                 </span>

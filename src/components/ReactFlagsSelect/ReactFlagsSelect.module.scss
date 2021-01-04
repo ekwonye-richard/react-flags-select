@@ -58,6 +58,11 @@ $gray-alt: #bdbbbb;
   }
 }
 
+.disabledBtn {
+  background: $gray;
+  cursor: default;
+}
+
 .label {
   font-size: 1em;
   padding-left: 10px;
