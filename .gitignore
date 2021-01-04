@@ -1,5 +1,5 @@
-/node_modules
-/build
+node_modules
+build
 npm-debug.log*
-/src/components/Flags
-/storybook-static
+src/components/Flags/*.tsx
+storybook-static

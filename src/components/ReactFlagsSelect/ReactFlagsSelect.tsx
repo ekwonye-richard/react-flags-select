@@ -37,13 +37,13 @@ type Props = {
 
 const ReactFlagsSelect: React.FC<Props> = ({
   className,
-  selected = "",
+  selected,
   onSelect,
   selectButtonClassName,
   showSelectedLabel = true,
   showOptionLabel = true,
   selectedSize = 16,
-  optionsSize = 14,
+  optionsSize = 16,
   customLabels = {},
   placeholder,
   searchable = false,
@@ -160,10 +160,11 @@ const ReactFlagsSelect: React.FC<Props> = ({
         [styles.flagsSelectInline]: !fullWidth,
       })}
       id={id}
+      data-testid="rfs"
     >
       <button
         ref={selectedFlagRef}
-        id="rfs_btn"
+        id="rfs-btn"
         type="button"
         className={cx(styles.selectBtn, selectButtonClassName, {
           [styles.disabledBtn]: disabled,
@@ -172,14 +173,20 @@ const ReactFlagsSelect: React.FC<Props> = ({
         onClick={toggleDropdown}
         onKeyUp={(e) => closeDropdwownWithKeyboard(e)}
         disabled={disabled}
-        aria-labelledby="rfs_btn"
+        aria-labelledby="rfs-btn"
         aria-haspopup="listbox"
         aria-expanded={isDropdownOpen}
+        data-testid="rfs-btn"
       >
         <span className={styles.selectValue}>
           {validSelectedValue ? (
             <>
-              {getSelectedFlag()}
+              <span
+                className={styles.selectFlag}
+                data-testid="rfs-selected-flag"
+              >
+                {getSelectedFlag()}
+              </span>
               {showSelectedLabel && (
                 <span className={styles.label}>
                   {getLabel(validSelectedValue)}
@@ -207,6 +214,8 @@ const ReactFlagsSelect: React.FC<Props> = ({
             <div className={styles.filterBox}>
               <input
                 type="text"
+                name="rfs-q"
+                autoComplete="off"
                 value={filterValue}
                 placeholder={searchPlaceholder || defaultSearchPlaceholder}
                 ref={filterTextRef}
@@ -231,7 +240,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
                 onKeyUp={(e) => onSelectWithKeyboard(e, countryCode)}
               >
                 <span className={styles.selectOptionValue}>
-                  <CountryFlag />
+                  <span className={styles.selectFlag}>
+                    <CountryFlag />
+                  </span>
                   {showOptionLabel && (
                     <span className={styles.label}>
                       {getLabel(countryCode)}

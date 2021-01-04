@@ -18,13 +18,13 @@ export default {
 } as Meta;
 
 export const Primary: React.FC<{}> = () => {
-  const [selected, setSelected] = useState("jhjjjh");
+  const [selected, setSelected] = useState("");
   const onSelect = (code: string): void => setSelected(code);
 
   const showSelectedLabel = boolean("Show Selected Label", true);
   const selectedSize = number("Selected Size", 16);
   const showOptionLabel = boolean("Show Option Label", true);
-  const optionsSize = number("Options Size", 14);
+  const optionsSize = number("Options Size", 16);
   const placeholder = text("Placeholder", "");
   const searchable = boolean("Searchable", false);
   const searchPlaceholder = text("Search Placeholder", "");

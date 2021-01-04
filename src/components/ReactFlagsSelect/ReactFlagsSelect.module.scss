@@ -8,12 +8,6 @@ $gray-alt: #bdbbbb;
   vertical-align: inherit;
   padding-bottom: 5px;
   text-align: left;
-
-  svg {
-    width: 1.2em;
-    height: 1.2em;
-    flex-shrink: 0;
-  }
 }
 
 .flagsSelectInline {
@@ -39,7 +33,6 @@ $gray-alt: #bdbbbb;
     width: 0;
     height: 0;
     display: inline-block;
-    // vertical-align: middle;
     margin-left: 5px;
   }
 
@@ -94,6 +87,11 @@ $gray-alt: #bdbbbb;
   }
 }
 
+.selectFlag {
+  display: inline-flex;
+  font-size: 1.2em;
+}
+
 .selectOptionValue {
   display: flex;
   align-items: center;
@@ -111,7 +109,7 @@ $gray-alt: #bdbbbb;
   background: $white;
   margin-top: 8px;
   padding: 8px 0;
-  max-height: 160px;
+  max-height: 180px;
   overflow: auto;
 }
 
