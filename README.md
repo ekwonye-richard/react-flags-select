@@ -21,7 +21,7 @@ import ReactFlagsSelect from 'react-flags-select';
 
 ```javascript
     const [selected, setSelected] = useState("");
-    
+
     <ReactFlagsSelect selected={selected} onSelect={code => setSelected(code)}/>
 ```
 
