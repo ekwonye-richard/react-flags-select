@@ -13,7 +13,7 @@ type FlagKey = keyof Flags;
 
 type Props = {
   className?: string;
-  selected?: string;
+  selected: string;
   onSelect: OnSelect;
   selectButtonClassName?: string;
   showSelectedLabel?: boolean;
@@ -74,14 +74,14 @@ const ReactFlagsSelect: React.FC<Props> = ({
     return <SelectedFlag />;
   };
 
-  const toggleDropdown = (): void => setIsDropdownOpen(!isDropdownOpen);
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-  const onOptionSelect = (countryCode: string): void => {
+  const onOptionSelect = (countryCode: string) => {
     setFilterValue("");
     onSelect(countryCode);
   };
 
-  const filterSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const filterSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value || "";
     setFilterValue(value);
 
@@ -98,7 +98,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
     setFilteredCountriesOptions(filteredCountriesOptions);
   };
 
-  const closeDropdown = (e: MouseEvent): void => {
+  const closeDropdown = (e: MouseEvent) => {
     if (
       e.target !== selectedFlagRef.current &&
       e.target !== optionsRef.current &&
@@ -208,7 +208,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
                 className={cx(styles.selectOption, {
                   [styles.selectOptionWithlabel]: showOptionLabel,
                 })}
-                onClick={(): void => onOptionSelect(countryCode)}
+                onClick={() => onOptionSelect(countryCode)}
                 onKeyUp={(e) => onSelectWithKeyboard(e, countryCode)}
               >
                 <span className={styles.selectOptionValue}>
