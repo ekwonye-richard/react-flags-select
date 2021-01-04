@@ -3,11 +3,11 @@ name: "Bump Version"
 on:
   push:
     branches:
-      - "beta"
+      - "master"
 
 jobs:
   bump-version:
-    name: "Bump Version on beta"
+    name: "Bump Version on master"
     runs-on: ubuntu-latest
 
     steps:
