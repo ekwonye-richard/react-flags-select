@@ -18,7 +18,7 @@
     "test": "",
     "prepublishOnly": "yarn build",
     "build-storybook": "build-storybook",
-    "gen-flags-components": "npx @svgr/cli --icon -d src/components/Flags --ignore-existing flags"
+    "gen-flags-components": "node_modules/@svgr/cli/bin/svgr --icon -d src/components/Flags --ignore-existing flags"
   },
   "dependencies": {
     "@types/jest": "^26.0.19",
