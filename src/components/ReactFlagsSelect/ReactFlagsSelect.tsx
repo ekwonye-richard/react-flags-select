@@ -149,12 +149,14 @@ const ReactFlagsSelect: React.FC<Props> = ({
     >
       <button
         ref={selectedFlagRef}
+        id="rfs_btn"
         type="button"
         className={cx(styles.selectBtn, selectButtonClassName)}
         style={{ fontSize: selectedSize }}
         onClick={toggleDropdown}
         onKeyUp={(e) => closeDropdwownWithKeyboard(e)}
         disabled={disabled}
+        aria-labelledby="rfs_btn"
         aria-haspopup="listbox"
         aria-expanded={isDropdownOpen}
       >
@@ -203,6 +205,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
             return (
               <li
                 key={countryCode}
+                id={`rfs-${countryCode}`}
                 role="option"
                 tabIndex={0}
                 className={cx(styles.selectOption, {
