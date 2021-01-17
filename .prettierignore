@@ -1,0 +1,3 @@
+build
+coverage
+src/components/Flags/Countries/*.tsx

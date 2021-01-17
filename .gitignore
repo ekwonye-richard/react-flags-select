@@ -1,8 +1,5 @@
-/coverage
-/es
-/node_modules
-/umd
+node_modules
+build
 npm-debug.log*
-.DS_Store
-*.icloud
-/css/
+src/components/Flags/Countries/*.tsx
+storybook-static

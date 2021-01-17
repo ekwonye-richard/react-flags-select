@@ -1,0 +1,146 @@
+$white: #ffffff;
+$black: #4d4d4d;
+$gray: #eaeaea;
+$gray-alt: #bdbbbb;
+
+.flagsSelect {
+  position: relative;
+  vertical-align: inherit;
+  padding-bottom: 5px;
+  text-align: left;
+}
+
+.flagsSelectInline {
+  display: inline-block;
+}
+
+.selectBtn {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  font-family: inherit;
+  color: $black;
+  border: thin solid transparentize($black, 0.7);
+  border-radius: 4px;
+  background: transparent;
+
+  &:after,
+  &[aria-expanded="true"]:after {
+    content: " ";
+    width: 0;
+    height: 0;
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  &:after {
+    border-top: 5px solid $black;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 0;
+  }
+
+  &[aria-expanded="true"]:after {
+    border-top: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid $black;
+  }
+}
+
+.disabledBtn {
+  background: $gray;
+  cursor: default;
+}
+
+.label {
+  font-size: 1em;
+  padding-left: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.selectValue,
+.selectOption {
+  cursor: pointer;
+  padding: 0 8px;
+  margin: 4px 0;
+  white-space: nowrap;
+}
+
+.selectValue {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.selectOption {
+  padding: 2px 18px;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    background: $gray;
+  }
+}
+
+.selectFlag {
+  display: inline-flex;
+  font-size: 1.2em;
+}
+
+.selectOptionValue {
+  display: flex;
+  align-items: center;
+}
+
+.selectOptionWithlabel {
+  padding: 4px 10px;
+}
+
+.selectOptions {
+  position: absolute;
+  z-index: 999999;
+  border: 1px solid $gray-alt;
+  border-radius: 3px;
+  background: $white;
+  margin-top: 8px;
+  padding: 8px 0;
+  max-height: 180px;
+  overflow: auto;
+}
+
+.selectOptionsWithSearch {
+  padding: 0 0 8px 0;
+}
+
+.fullWidthOptions {
+  right: 0;
+  left: 0;
+}
+
+.alignOptionsToRight {
+  right: 0;
+}
+
+.filterBox {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding-top: 8px;
+  background: $white;
+
+  input {
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    padding: 8px;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
