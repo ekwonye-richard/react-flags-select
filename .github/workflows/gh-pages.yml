@@ -17,6 +17,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           yarn install
+          yarn gen-flags-components
           yarn build-storybook
 
       - name: Deploy 🚀
