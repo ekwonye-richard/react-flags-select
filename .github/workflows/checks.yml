@@ -1,0 +1,33 @@
+name: Checks on every push
+
+on: [push]
+
+jobs:
+  install-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      - name: Install
+        run: |
+          yarn install
+          yarn gen-flags-components
+
+  lint:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install
+        run: |
+          yarn lint
+
+  lint:
+    needs: install-dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install
+        run: |
+          yarn test
