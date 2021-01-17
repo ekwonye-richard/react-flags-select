@@ -33,20 +33,22 @@ export const Primary: React.FC<{}> = () => {
   const disabled = boolean("Disabled", false);
 
   return (
-    <ReactFlagsSelect
-      selected={selected}
-      onSelect={onSelect}
-      showSelectedLabel={showSelectedLabel}
-      selectedSize={selectedSize}
-      showOptionLabel={showOptionLabel}
-      optionsSize={optionsSize}
-      placeholder={placeholder}
-      searchable={searchable}
-      searchPlaceholder={searchPlaceholder}
-      alignOptionsToLeft={alignOptionsToLeft}
-      fullWidth={fullWidth}
-      disabled={disabled}
-    />
+    <div className="demo-wrapper">
+      <ReactFlagsSelect
+        selected={selected}
+        onSelect={onSelect}
+        showSelectedLabel={showSelectedLabel}
+        selectedSize={selectedSize}
+        showOptionLabel={showOptionLabel}
+        optionsSize={optionsSize}
+        placeholder={placeholder}
+        searchable={searchable}
+        searchPlaceholder={searchPlaceholder}
+        alignOptionsToLeft={alignOptionsToLeft}
+        fullWidth={fullWidth}
+        disabled={disabled}
+      />
+    </div>
   );
 };
 
@@ -60,11 +62,13 @@ export const WithCustomLabels: React.FC<{}> = () => {
   });
 
   return (
-    <ReactFlagsSelect
-      selected={selected}
-      onSelect={onSelect}
-      customLabels={customLabels}
-    />
+    <div className="demo-wrapper">
+      <ReactFlagsSelect
+        selected={selected}
+        onSelect={onSelect}
+        customLabels={customLabels}
+      />
+    </div>
   );
 };
 
@@ -76,11 +80,13 @@ export const WithCountries: React.FC<{}> = () => {
   const blacklistCountries = boolean("Blacklist Countries", false);
 
   return (
-    <ReactFlagsSelect
-      selected={selected}
-      onSelect={onSelect}
-      countries={countries}
-      blacklistCountries={blacklistCountries}
-    />
+    <div className="demo-wrapper">
+      <ReactFlagsSelect
+        selected={selected}
+        onSelect={onSelect}
+        countries={countries}
+        blacklistCountries={blacklistCountries}
+      />
+    </div>
   );
 };

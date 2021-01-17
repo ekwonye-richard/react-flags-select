@@ -18,7 +18,7 @@ module.exports = {
     "prettier/@typescript-eslint",
     "plugin:prettier/recommended",
   ],
-  ignorePatterns: ["**/components/Flags/*.js"],
+  ignorePatterns: ["**/components/Flags/Countries/*.tsx"],
   rules: {
     "react/prop-types": "off",
     "@typescript-eslint/ban-types": [

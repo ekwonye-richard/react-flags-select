@@ -19,7 +19,7 @@
     "test:watch": "jest --watch",
     "prepublishOnly": "yarn build",
     "build-storybook": "build-storybook",
-    "gen-flags-components": "node_modules/@svgr/cli/bin/svgr --typescript --icon -d src/components/Flags --ignore-existing flags"
+    "gen-flags-components": "node_modules/@svgr/cli/bin/svgr --typescript --icon -d src/components/Flags/Countries --ignore-existing flags"
   },
   "dependencies": {
     "classnames": "^2.2.6"
