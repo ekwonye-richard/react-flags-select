@@ -3,7 +3,7 @@
 A React library that provides a customizable SVG flags select components and standalone SVG flags components.
 
 ## Demo and Example
-Live demo: [ekwonye-richard.github.io/react-flags-select/](https://ekwonye-richard.github.io/react-flags-select/)
+Live demo: [ekwonye-richard.github.io/react-flags-select/](https://ekwonye-richard.github.io/react-flags-select/?path=/story/reactflagsselect--primary)
 
 ## Installation
 ```
@@ -18,7 +18,7 @@ npm install react-flags-select --save
 ```javascript
     import React, { useState } from 'react';
     import ReactFlagsSelect from 'react-flags-select';
-    
+
     const App = () => {
       const [selected, setSelected] = useState('');
 
@@ -27,7 +27,7 @@ npm install react-flags-select --save
         onSelect={code => setSelected(code)}
       />
     }
-    
+
     export default App;
 ```
 
@@ -36,13 +36,13 @@ npm install react-flags-select --save
 ```javascript
     import React from 'react';
     import { Us } from 'react-flags-select';
-    
+
     const Region = () => (
       <div>
         <Us /> United States
       </div>
     )
-    
+
     export default Region;
 ```
 
