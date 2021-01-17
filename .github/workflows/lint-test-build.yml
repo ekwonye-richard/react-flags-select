@@ -1,9 +1,9 @@
-name: Checks on every push
+name: lint-test-build
 
 on: [push]
 
 jobs:
-  install-dependencies:
+  lint-test-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,18 +16,14 @@ jobs:
           yarn install
           yarn gen-flags-components
 
-  lint:
-    needs: install-dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install
+      - name: Lint
         run: |
           yarn lint
 
-  lint:
-    needs: install-dependencies
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install
+      - name: Test
         run: |
           yarn test
+
+      - name: Build
+        run: |
+          yarn build
