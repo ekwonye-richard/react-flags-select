@@ -27,13 +27,13 @@ describe("ReactFlagsSelect", () => {
   });
 
   describe("selected", () => {
-    describe("Placeholder", () => {
+    describe("placeholder", () => {
       it("renders the default placeholder", () => {
         render(<ReactFlagsSelect {...defaultProps} />);
         expect(screen.getByText("Select a country")).toBeInTheDocument();
       });
 
-      it("renders the a custom placeholder if passed", () => {
+      it("renders a custom placeholder if passed", () => {
         render(
           <ReactFlagsSelect {...defaultProps} placeholder="Country of Origin" />
         );
@@ -54,7 +54,7 @@ describe("ReactFlagsSelect", () => {
         expect(flag?.firstChild?.nodeName).toBe("svg");
       });
 
-      it("renders the label of the selected country", () => {
+      it("renders the label of the valid selected country", () => {
         render(<ReactFlagsSelect {...defaultProps} selected="NG" />);
         expect(screen.getByText("Nigeria")).toBeInTheDocument();
       });
@@ -150,12 +150,12 @@ describe("ReactFlagsSelect", () => {
     });
 
     describe("when opened with searchable options", () => {
-      it("does not render a searchable option list by default", () => {
+      it("does not render a searchable options list by default", () => {
         openOptions();
         expect(screen.queryByPlaceholderText("Search")).not.toBeInTheDocument();
       });
 
-      it("renders a searchable option list when searchable is true", () => {
+      it("renders a searchable options list when searchable is true", () => {
         openOptions({ searchable: true });
         expect(screen.getByPlaceholderText("Search")).toBeInTheDocument();
       });
@@ -280,6 +280,19 @@ describe("ReactFlagsSelect", () => {
     });
   });
 
+  describe("select button ClassName", () => {
+    it("passes selectButtonClassName to the select button className if present", () => {
+      render(
+        <ReactFlagsSelect
+          {...defaultProps}
+          selectButtonClassName="flags-select-button"
+        />
+      );
+      const selectButton = screen.getByTestId("rfs-btn");
+      expect(selectButton.className.includes("flags-select-button")).toBe(true);
+    });
+  });
+
   describe("full width", () => {
     it("renders full width by default", () => {
       render(<ReactFlagsSelect {...defaultProps} />);
@@ -301,7 +314,7 @@ describe("ReactFlagsSelect", () => {
       expect(selectedButton).toHaveAttribute("disabled");
     });
 
-    it("renders styled as disabled", () => {
+    it("renders with disabled style", () => {
       render(<ReactFlagsSelect {...defaultProps} disabled />);
       const selectedButton = screen.getByTestId("rfs-btn");
       expect(selectedButton.className.includes("disabledBtn")).toBe(true);
