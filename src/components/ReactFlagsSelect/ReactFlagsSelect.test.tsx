@@ -142,10 +142,12 @@ describe("ReactFlagsSelect", () => {
         expect(optionsList).toHaveStyle({ "font-size": "24px" });
       });
 
-      it("aligns options to left of alignOptionsToLeft is true", () => {
-        openOptions({ alignOptionsToLeft: true });
+      it("aligns options to right of alignOptionsToRight is true", () => {
+        openOptions({ alignOptionsToRight: true });
         const optionsList = screen.getByRole("listbox");
-        expect(optionsList.className.includes("alignOptionsToLeft")).toBe(true);
+        expect(optionsList.className.includes("alignOptionsToRight")).toBe(
+          true
+        );
       });
     });
 

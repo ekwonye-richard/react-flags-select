@@ -28,7 +28,7 @@ export const Primary: React.FC<{}> = () => {
   const placeholder = text("Placeholder", "");
   const searchable = boolean("Searchable", false);
   const searchPlaceholder = text("Search Placeholder", "");
-  const alignOptionsToLeft = boolean("Align Options to Left", false);
+  const alignOptionsToRight = boolean("Align Options to Right", false);
   const fullWidth = boolean("Full Width", true);
   const disabled = boolean("Disabled", false);
 
@@ -44,7 +44,7 @@ export const Primary: React.FC<{}> = () => {
         placeholder={placeholder}
         searchable={searchable}
         searchPlaceholder={searchPlaceholder}
-        alignOptionsToLeft={alignOptionsToLeft}
+        alignOptionsToRight={alignOptionsToRight}
         fullWidth={fullWidth}
         disabled={disabled}
       />

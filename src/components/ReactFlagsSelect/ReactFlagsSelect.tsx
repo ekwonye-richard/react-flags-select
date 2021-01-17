@@ -27,7 +27,7 @@ type Props = {
   placeholder?: React.ReactNode;
   searchable?: boolean;
   searchPlaceholder?: string;
-  alignOptionsToLeft?: boolean;
+  alignOptionsToRight?: boolean;
   countries?: CountryCodes;
   blacklistCountries?: boolean;
   fullWidth?: boolean;
@@ -48,7 +48,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
   placeholder,
   searchable = false,
   searchPlaceholder,
-  alignOptionsToLeft = false,
+  alignOptionsToRight = false,
   countries,
   blacklistCountries = false,
   fullWidth = true,
@@ -206,7 +206,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
           style={{ fontSize: optionsSize }}
           className={cx(styles.selectOptions, {
             [styles.selectOptionsWithSearch]: searchable,
-            [styles.alignOptionsToLeft]: alignOptionsToLeft,
+            [styles.alignOptionsToRight]: alignOptionsToRight,
             [styles.fullWidthOptions]: fullWidth,
           })}
         >
