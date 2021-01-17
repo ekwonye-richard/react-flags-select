@@ -1,4 +1,4 @@
-name: lint-commit-messages
+name: Lint Commit Messages
 
 on: [push]
 
