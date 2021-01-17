@@ -8,6 +8,9 @@ import * as flags from "../Flags";
 
 import styles from "./ReactFlagsSelect.module.scss";
 
+const defaultPlaceholder = "Select a country";
+const defaultSearchPlaceholder = "Search";
+
 type Flags = typeof flags;
 type FlagKey = keyof Flags;
 
@@ -34,17 +37,17 @@ type Props = {
 
 const ReactFlagsSelect: React.FC<Props> = ({
   className,
-  selected = "",
+  selected,
   onSelect,
   selectButtonClassName,
   showSelectedLabel = true,
   showOptionLabel = true,
   selectedSize = 16,
-  optionsSize = 14,
+  optionsSize = 16,
   customLabels = {},
-  placeholder = "Select a country",
+  placeholder,
   searchable = false,
-  searchPlaceholder = "Search",
+  searchPlaceholder,
   alignOptionsToLeft = false,
   countries,
   blacklistCountries = false,
@@ -64,14 +67,22 @@ const ReactFlagsSelect: React.FC<Props> = ({
   const optionsRef = useRef(null);
   const filterTextRef = useRef(null);
 
+  const validSelectedValue = countriesOptions.includes(selected)
+    ? selected
+    : "";
+
   const options = filterValue ? filteredCountriesOptions : countriesOptions;
 
   const getFlag = (key: FlagKey): Flags[FlagKey] => flags[key];
 
   const getSelectedFlag = (): React.ReactElement => {
-    const selectedFlagName = countryCodeToPascalCase(selected);
+    const selectedFlagName = countryCodeToPascalCase(validSelectedValue);
     const SelectedFlag = getFlag(selectedFlagName as FlagKey);
     return <SelectedFlag />;
+  };
+
+  const getLabel = (countryCode: string) => {
+    return customLabels[countryCode] || AllCountries[countryCode];
   };
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -91,7 +102,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
     }
 
     const filteredCountriesOptions = countriesOptions.filter((key) => {
-      const label = customLabels[key] || AllCountries[key];
+      const label = getLabel(key);
       return label && label.match(new RegExp(value, "i"));
     });
 
@@ -133,6 +144,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
 
   useEffect(() => {
     setCountriesOptions(getCountryCodes(countries, blacklistCountries));
+  }, [countries, blacklistCountries]);
+
+  useEffect(() => {
     window.addEventListener("click", closeDropdown);
 
     return () => {
@@ -146,36 +160,45 @@ const ReactFlagsSelect: React.FC<Props> = ({
         [styles.flagsSelectInline]: !fullWidth,
       })}
       id={id}
+      data-testid="rfs"
     >
       <button
         ref={selectedFlagRef}
-        id="rfs_btn"
+        id="rfs-btn"
         type="button"
-        className={cx(styles.selectBtn, selectButtonClassName)}
+        className={cx(styles.selectBtn, selectButtonClassName, {
+          [styles.disabledBtn]: disabled,
+        })}
         style={{ fontSize: selectedSize }}
         onClick={toggleDropdown}
         onKeyUp={(e) => closeDropdwownWithKeyboard(e)}
         disabled={disabled}
-        aria-labelledby="rfs_btn"
+        aria-labelledby="rfs-btn"
         aria-haspopup="listbox"
         aria-expanded={isDropdownOpen}
+        data-testid="rfs-btn"
       >
         <span className={styles.selectValue}>
-          {selected ? (
+          {validSelectedValue ? (
             <>
-              {getSelectedFlag()}
+              <span
+                className={styles.selectFlag}
+                data-testid="rfs-selected-flag"
+              >
+                {getSelectedFlag()}
+              </span>
               {showSelectedLabel && (
                 <span className={styles.label}>
-                  {customLabels[selected] || AllCountries[selected]}
+                  {getLabel(validSelectedValue)}
                 </span>
               )}
             </>
           ) : (
-            <>{placeholder}</>
+            <>{placeholder || defaultPlaceholder}</>
           )}
         </span>
       </button>
-      {isDropdownOpen && (
+      {!disabled && isDropdownOpen && (
         <ul
           tabIndex={-1}
           role="listbox"
@@ -191,8 +214,10 @@ const ReactFlagsSelect: React.FC<Props> = ({
             <div className={styles.filterBox}>
               <input
                 type="text"
+                name="rfs-q"
+                autoComplete="off"
                 value={filterValue}
-                placeholder={searchPlaceholder}
+                placeholder={searchPlaceholder || defaultSearchPlaceholder}
                 ref={filterTextRef}
                 onChange={filterSearch}
               />
@@ -215,10 +240,12 @@ const ReactFlagsSelect: React.FC<Props> = ({
                 onKeyUp={(e) => onSelectWithKeyboard(e, countryCode)}
               >
                 <span className={styles.selectOptionValue}>
-                  <CountryFlag />
+                  <span className={styles.selectFlag}>
+                    <CountryFlag />
+                  </span>
                   {showOptionLabel && (
                     <span className={styles.label}>
-                      {customLabels[countryCode] || AllCountries[countryCode]}
+                      {getLabel(countryCode)}
                     </span>
                   )}
                 </span>

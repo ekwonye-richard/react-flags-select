@@ -11,7 +11,11 @@ export const getCountryCodes = (
     return fullCountryCodes;
   }
 
-  const validCountryCodes = countries.filter((code) => AllCountries[code]);
+  const uniqueCountries = [...new Set(countries)];
+
+  const validCountryCodes = uniqueCountries.filter(
+    (code) => AllCountries[code]
+  );
   const filteredCountryCodes = blacklistCountries
     ? fullCountryCodes.filter((code) => !validCountryCodes.includes(code))
     : validCountryCodes;
