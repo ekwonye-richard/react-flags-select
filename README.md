@@ -48,7 +48,7 @@ npm install react-flags-select --save
 
 ### Country Codes
 
-Full list of all [Country Codes](https://github.com/ekwonye-richard/react-flags-select/blob/master/src/data/countries.ts).
+Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-select/blob/master/src/data/countries.ts).
 
 ## Props
 
