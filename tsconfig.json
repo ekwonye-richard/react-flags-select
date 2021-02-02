@@ -17,4 +17,7 @@
     "jsx": "react",
     "downlevelIteration": true
   },
+  "include": [
+    "./src/"
+  ]
 }

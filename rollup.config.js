@@ -29,7 +29,7 @@ export default {
       presets: ["@babel/env", "@babel/preset-react"],
     }),
     commonjs({ exclude: "/src/components/Flags/Af.js" }),
-    typescript({ useTsconfigDeclarationDir: true }),
+    typescript({ useTsconfigDeclarationDir: false }),
     postcss(),
   ],
 };
