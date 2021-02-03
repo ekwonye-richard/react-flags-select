@@ -263,7 +263,7 @@ The SVG `viewBox` is preserved and SVG inherits it's parent element's text size.
 
 ## Contribution
 
-This project is written in Typescript and developed with [Storybook](https://storybook.js.org/). Tests are written with Jest and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+This project is written in Typescript and developed with [Storybook](https://storybook.js.org/). Tests are written with Jest and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/). Raise a pull request with your changes.
 
 #### Installation
 ```
