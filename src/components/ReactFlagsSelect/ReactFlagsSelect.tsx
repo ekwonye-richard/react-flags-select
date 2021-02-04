@@ -20,7 +20,9 @@ type Props = {
   onSelect: OnSelect;
   selectButtonClassName?: string;
   showSelectedLabel?: boolean;
+  showSecondarySelectedLabel?: boolean;
   showOptionLabel?: boolean;
+  showSecondaryOptionLabel?: boolean;
   selectedSize?: number;
   optionsSize?: number;
   customLabels?: CustomLabels;
@@ -41,7 +43,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
   onSelect,
   selectButtonClassName,
   showSelectedLabel = true,
+  showSecondarySelectedLabel = true,
   showOptionLabel = true,
+  showSecondaryOptionLabel = true,
   selectedSize = 16,
   optionsSize = 16,
   customLabels = {},
@@ -103,6 +107,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
 
     const filteredCountriesOptions = countriesOptions.filter((key) => {
       const label = getLabel(key);
+      if (typeof label === "object") {
+        return label && label.primary.match(new RegExp(value, "i"));
+      }
       return label && label.match(new RegExp(value, "i"));
     });
 
@@ -154,6 +161,8 @@ const ReactFlagsSelect: React.FC<Props> = ({
     };
   }, []);
 
+  const displayLabel = getLabel(validSelectedValue);
+
   return (
     <div
       className={cx(styles.flagsSelect, className, {
@@ -189,9 +198,17 @@ const ReactFlagsSelect: React.FC<Props> = ({
               </span>
               {showSelectedLabel && (
                 <span className={styles.label}>
-                  {getLabel(validSelectedValue)}
+                  {typeof displayLabel === "object"
+                    ? displayLabel.primary
+                    : displayLabel}
                 </span>
               )}
+              {showSecondarySelectedLabel &&
+                typeof displayLabel === "object" && (
+                  <span className={[styles.label, styles.secondary].join(" ")}>
+                    {displayLabel.secondary}
+                  </span>
+                )}
             </>
           ) : (
             <>{placeholder || defaultPlaceholder}</>
@@ -226,6 +243,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
           {options.map((countryCode) => {
             const countryFlagName = countryCodeToPascalCase(countryCode);
             const CountryFlag = getFlag(countryFlagName as FlagKey);
+            const countryLabel = getLabel(countryCode);
 
             return (
               <li
@@ -245,9 +263,19 @@ const ReactFlagsSelect: React.FC<Props> = ({
                   </span>
                   {showOptionLabel && (
                     <span className={styles.label}>
-                      {getLabel(countryCode)}
+                      {typeof countryLabel === "object"
+                        ? countryLabel.primary
+                        : countryLabel}
                     </span>
                   )}
+                  {showSecondaryOptionLabel &&
+                    typeof countryLabel === "object" && (
+                      <span
+                        className={[styles.label, styles.secondary].join(" ")}
+                      >
+                        {countryLabel.secondary}
+                      </span>
+                    )}
                 </span>
               </li>
             );

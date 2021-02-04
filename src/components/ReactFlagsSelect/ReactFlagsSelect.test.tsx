@@ -70,12 +70,36 @@ describe("ReactFlagsSelect", () => {
         expect(screen.getByText("GB")).toBeInTheDocument();
       });
 
+      it("renders a special custom label of the valid selected country if present", () => {
+        render(
+          <ReactFlagsSelect
+            {...defaultProps}
+            selected="GB"
+            customLabels={{ GB: { primary: "GB", secondary: "+44" } }}
+          />
+        );
+        expect(screen.getByText("GB")).toBeInTheDocument();
+        expect(screen.getByText("+44")).toBeInTheDocument();
+      });
+
       it("does not render a label of the selected country if showSelectedLabel is false", () => {
         render(
           <ReactFlagsSelect
             {...defaultProps}
             selected="US"
             showSelectedLabel={false}
+          />
+        );
+        expect(screen.queryByText("United States")).not.toBeInTheDocument();
+      });
+
+      it("does not render a secondary label of the selected country if showSecondarySelectedLabel is false", () => {
+        render(
+          <ReactFlagsSelect
+            {...defaultProps}
+            selected="US"
+            showSecondarySelectedLabel={false}
+            customLabels={{ US: { primary: "US", secondary: "+1" } }}
           />
         );
         expect(screen.queryByText("United States")).not.toBeInTheDocument();
@@ -131,9 +155,27 @@ describe("ReactFlagsSelect", () => {
         expect(screen.getByText("US")).toBeInTheDocument();
       });
 
+      it("renders a custom label of each country option if present", () => {
+        openOptions({
+          customLabels: { GB: { primary: "GB", secondary: "+44" }, US: "US" },
+        });
+        expect(screen.getByText("Nigeria")).toBeInTheDocument();
+        expect(screen.getByText("GB")).toBeInTheDocument();
+        expect(screen.getByText("+44")).toBeInTheDocument();
+        expect(screen.getByText("US")).toBeInTheDocument();
+      });
+
       it("does not render the label of each country option if showOptionLabel is false", () => {
         openOptions({ showOptionLabel: false });
         expect(screen.queryByText("Nigeria")).not.toBeInTheDocument();
+      });
+
+      it("does not render the label of each country option if showSecondaryOptionLabel is false", () => {
+        openOptions({
+          showSecondaryOptionLabel: false,
+          customLabels: { US: { primary: "US", secondary: "+1" } },
+        });
+        expect(screen.queryByText("+1")).not.toBeInTheDocument();
       });
 
       it("renders the options with the optionsSize in pixels if passed", () => {
