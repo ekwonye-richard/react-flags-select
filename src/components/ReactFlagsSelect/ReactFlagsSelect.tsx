@@ -2,8 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import cx from "classnames";
 
 import { countries as AllCountries } from "../../data";
-import { countryCodeToPascalCase, getCountryCodes } from "../../utils";
-import type { CountryCodes, CustomLabels, OnSelect } from "../../types";
+import {
+  countryCodeToPascalCase,
+  getCountryCodes,
+  isCustomLabelObject,
+} from "../../utils";
+import type {
+  CountryCodes,
+  CustomLabel,
+  CustomLabels,
+  OnSelect,
+} from "../../types";
 import * as flags from "../Flags";
 
 import styles from "./ReactFlagsSelect.module.scss";
@@ -198,15 +207,15 @@ const ReactFlagsSelect: React.FC<Props> = ({
               </span>
               {showSelectedLabel && (
                 <span className={styles.label}>
-                  {typeof displayLabel === "object"
-                    ? displayLabel.primary
+                  {isCustomLabelObject(displayLabel)
+                    ? (displayLabel as CustomLabel).primary
                     : displayLabel}
                 </span>
               )}
               {showSecondarySelectedLabel &&
-                typeof displayLabel === "object" && (
-                  <span className={[styles.label, styles.secondary].join(" ")}>
-                    {displayLabel.secondary}
+                isCustomLabelObject(displayLabel) && (
+                  <span className={cx(styles.label, styles.secondaryLabel)}>
+                    {(displayLabel as CustomLabel).secondary}
                   </span>
                 )}
             </>
@@ -263,17 +272,15 @@ const ReactFlagsSelect: React.FC<Props> = ({
                   </span>
                   {showOptionLabel && (
                     <span className={styles.label}>
-                      {typeof countryLabel === "object"
-                        ? countryLabel.primary
+                      {isCustomLabelObject(countryLabel)
+                        ? (countryLabel as CustomLabel).primary
                         : countryLabel}
                     </span>
                   )}
                   {showSecondaryOptionLabel &&
-                    typeof countryLabel === "object" && (
-                      <span
-                        className={[styles.label, styles.secondary].join(" ")}
-                      >
-                        {countryLabel.secondary}
+                    isCustomLabelObject(countryLabel) && (
+                      <span className={cx(styles.label, styles.secondaryLabel)}>
+                        {(countryLabel as CustomLabel).secondary}
                       </span>
                     )}
                 </span>
