@@ -2,8 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import cx from "classnames";
 
 import { countries as AllCountries } from "../../data";
-import { countryCodeToPascalCase, getCountryCodes } from "../../utils";
-import type { CountryCodes, CustomLabels, OnSelect } from "../../types";
+import {
+  countryCodeToPascalCase,
+  getCountryCodes,
+  isCustomLabelObject,
+} from "../../utils";
+import type {
+  CountryCodes,
+  CustomLabel,
+  CustomLabels,
+  OnSelect,
+} from "../../types";
 import * as flags from "../Flags";
 
 import styles from "./ReactFlagsSelect.module.scss";
@@ -20,7 +29,9 @@ type Props = {
   onSelect: OnSelect;
   selectButtonClassName?: string;
   showSelectedLabel?: boolean;
+  showSecondarySelectedLabel?: boolean;
   showOptionLabel?: boolean;
+  showSecondaryOptionLabel?: boolean;
   selectedSize?: number;
   optionsSize?: number;
   customLabels?: CustomLabels;
@@ -41,7 +52,9 @@ const ReactFlagsSelect: React.FC<Props> = ({
   onSelect,
   selectButtonClassName,
   showSelectedLabel = true,
+  showSecondarySelectedLabel = true,
   showOptionLabel = true,
+  showSecondaryOptionLabel = true,
   selectedSize = 16,
   optionsSize = 16,
   customLabels = {},
@@ -103,7 +116,13 @@ const ReactFlagsSelect: React.FC<Props> = ({
 
     const filteredCountriesOptions = countriesOptions.filter((key) => {
       const label = getLabel(key);
-      return label && label.match(new RegExp(value, "i"));
+      if (isCustomLabelObject(label)) {
+        return (
+          (label as CustomLabel)?.primary?.match(new RegExp(value, "i")) ||
+          (label as CustomLabel)?.secondary?.match(new RegExp(value, "i"))
+        );
+      }
+      return (label as string)?.match(new RegExp(value, "i"));
     });
 
     setFilteredCountriesOptions(filteredCountriesOptions);
@@ -154,6 +173,8 @@ const ReactFlagsSelect: React.FC<Props> = ({
     };
   }, []);
 
+  const displayLabel = getLabel(validSelectedValue);
+
   return (
     <div
       className={cx(styles.flagsSelect, className, {
@@ -189,9 +210,17 @@ const ReactFlagsSelect: React.FC<Props> = ({
               </span>
               {showSelectedLabel && (
                 <span className={styles.label}>
-                  {getLabel(validSelectedValue)}
+                  {isCustomLabelObject(displayLabel)
+                    ? (displayLabel as CustomLabel).primary
+                    : displayLabel}
                 </span>
               )}
+              {showSecondarySelectedLabel &&
+                isCustomLabelObject(displayLabel) && (
+                  <span className={cx(styles.label, styles.secondaryLabel)}>
+                    {(displayLabel as CustomLabel).secondary}
+                  </span>
+                )}
             </>
           ) : (
             <>{placeholder || defaultPlaceholder}</>
@@ -226,6 +255,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
           {options.map((countryCode) => {
             const countryFlagName = countryCodeToPascalCase(countryCode);
             const CountryFlag = getFlag(countryFlagName as FlagKey);
+            const countryLabel = getLabel(countryCode);
 
             return (
               <li
@@ -245,9 +275,17 @@ const ReactFlagsSelect: React.FC<Props> = ({
                   </span>
                   {showOptionLabel && (
                     <span className={styles.label}>
-                      {getLabel(countryCode)}
+                      {isCustomLabelObject(countryLabel)
+                        ? (countryLabel as CustomLabel).primary
+                        : countryLabel}
                     </span>
                   )}
+                  {showSecondaryOptionLabel &&
+                    isCustomLabelObject(countryLabel) && (
+                      <span className={cx(styles.label, styles.secondaryLabel)}>
+                        {(countryLabel as CustomLabel).secondary}
+                      </span>
+                    )}
                 </span>
               </li>
             );

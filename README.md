@@ -142,6 +142,33 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
     />
 ```
 
+`customLabels` now also accepts an array of objects (`CustomLabel`) instead of an array of strings. The default country name will still be shown if no label is passed. Also the secondary label will only be shown if there is one present.
+
+```javascript
+    <ReactFlagsSelect
+      ...
+      customLabels={{
+        "US": { primary: "EN-US", secondary: "+1" },
+        "GB": { primary: "EN-GB", secondary: "+44" },
+        "FR": { primary: "FR" } 
+      }}
+      />
+    />
+```
+
+`customLabels` can also be mixed between `CustomLabel` and `string`.
+```javascript
+    <ReactFlagsSelect
+      ...
+      customLabels={{
+        "US": { primary: "EN-US", secondary: "+1" },
+        "GB": { primary: "EN-GB", secondary: "+44" },
+        "FR": "FR"
+      }}
+      />
+    />
+```
+
 ### showSelectedLabel
 
 `showSelectedLabel` is a an optional `boolean` prop used to show or hide the label text of a selected country. The default value is `true`.
@@ -153,6 +180,18 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
     />
 ```
 
+### showSecondarySelectedLabel
+
+`showSecondarySelectedLabel` is an optional `boolean` prop used to show or hide the secondary label text of a selected country. The default value is `true`.
+
+
+```javascript
+    <ReactFlagsSelect
+      ...
+      showSecondarySelectedLabel={false}
+    />
+```
+
 ### showOptionLabel
 
 `showOptionLabel` is a an optional `boolean` prop used to show or hide the label text of a countries in the options dropdown. The default value is `true`.
@@ -161,6 +200,17 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
     <ReactFlagsSelect
       ...
       showOptionLabel={false}
+    />
+```
+
+### showSecondaryOptionLabel
+
+`showSecondaryOptionLabel` is a an optional `boolean` prop used to show or hide the secondary label text of a countries in the options dropdown. The default value is `true`.
+
+```javascript
+    <ReactFlagsSelect
+      ...
+      showSecondaryOptionLabel={false}
     />
 ```
 

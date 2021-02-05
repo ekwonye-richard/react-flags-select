@@ -1,5 +1,6 @@
 $white: #ffffff;
 $black: #4d4d4d;
+$gray-text: #707070;
 $gray: #eaeaea;
 $gray-alt: #bdbbbb;
 
@@ -61,6 +62,10 @@ $gray-alt: #bdbbbb;
   padding-left: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  &.secondaryLabel {
+    color: $gray-text;
+  }
 }
 
 .selectValue,
