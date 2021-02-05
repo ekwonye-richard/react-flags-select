@@ -22,8 +22,13 @@ export const Primary: React.FC<{}> = () => {
   const onSelect = (code: string): void => setSelected(code);
 
   const showSelectedLabel = boolean("Show Selected Label", true);
+  const showSecondarySelectedLabel = boolean(
+    "Show Secondary Selected Label",
+    true
+  );
   const selectedSize = number("Selected Size", 16);
   const showOptionLabel = boolean("Show Option Label", true);
+  const showSecondaryOptionLabel = boolean("Show Secondary Option Label", true);
   const optionsSize = number("Options Size", 16);
   const placeholder = text("Placeholder", "");
   const searchable = boolean("Searchable", false);
@@ -38,8 +43,10 @@ export const Primary: React.FC<{}> = () => {
         selected={selected}
         onSelect={onSelect}
         showSelectedLabel={showSelectedLabel}
+        showSecondarySelectedLabel={showSecondarySelectedLabel}
         selectedSize={selectedSize}
         showOptionLabel={showOptionLabel}
+        showSecondaryOptionLabel={showSecondaryOptionLabel}
         optionsSize={optionsSize}
         placeholder={placeholder}
         searchable={searchable}
@@ -66,6 +73,63 @@ export const WithCustomLabels: React.FC<{}> = () => {
       <ReactFlagsSelect
         selected={selected}
         onSelect={onSelect}
+        customLabels={customLabels}
+      />
+    </div>
+  );
+};
+
+export const WithCustomLabelsObject: React.FC<{}> = () => {
+  const [selected, setSelected] = useState("");
+  const onSelect = (code: string): void => setSelected(code);
+
+  const showSecondarySelectedLabel = boolean(
+    "Show Secondary Selected Label",
+    true
+  );
+  const showSecondaryOptionLabel = boolean("Show Secondary Option Label", true);
+
+  const customLabels = object("Custom Labels", {
+    GB: { primary: "GB", secondary: "+44" },
+    US: { primary: "US", secondary: "+1" },
+  });
+
+  return (
+    <div className="demo-wrapper">
+      <ReactFlagsSelect
+        selected={selected}
+        onSelect={onSelect}
+        showSecondarySelectedLabel={showSecondarySelectedLabel}
+        showSecondaryOptionLabel={showSecondaryOptionLabel}
+        customLabels={customLabels}
+      />
+    </div>
+  );
+};
+
+export const WithMixedCustomLabels: React.FC<{}> = () => {
+  const [selected, setSelected] = useState("");
+  const onSelect = (code: string): void => setSelected(code);
+
+  const showSecondarySelectedLabel = boolean(
+    "Show Secondary Selected Label",
+    true
+  );
+  const showSecondaryOptionLabel = boolean("Show Secondary Option Label", true);
+
+  const customLabels = object("Custom Labels", {
+    GB: { primary: "GB", secondary: "+44" },
+    US: { primary: "US", secondary: "+1" },
+    FR: "FR",
+  });
+
+  return (
+    <div className="demo-wrapper">
+      <ReactFlagsSelect
+        selected={selected}
+        onSelect={onSelect}
+        showSecondarySelectedLabel={showSecondarySelectedLabel}
+        showSecondaryOptionLabel={showSecondaryOptionLabel}
         customLabels={customLabels}
       />
     </div>
