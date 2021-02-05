@@ -62,10 +62,12 @@ $gray-alt: #bdbbbb;
   padding-left: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
 
-  &.secondaryLabel {
-    color: $gray-text;
-  }
+.secondaryLabel {
+  @extend .label;
+  color: $gray-text;
+  padding-left: 5px;
 }
 
 .selectValue,

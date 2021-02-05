@@ -118,11 +118,11 @@ const ReactFlagsSelect: React.FC<Props> = ({
       const label = getLabel(key);
       if (isCustomLabelObject(label)) {
         return (
-          (label as CustomLabel)?.primary?.match(new RegExp(value, "i")) ||
-          (label as CustomLabel)?.secondary?.match(new RegExp(value, "i"))
+          (label as CustomLabel)?.primary?.includes(value) ||
+          (label as CustomLabel)?.secondary?.includes(value)
         );
       }
-      return (label as string)?.match(new RegExp(value, "i"));
+      return (label as string)?.includes(value);
     });
 
     setFilteredCountriesOptions(filteredCountriesOptions);
@@ -217,7 +217,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
               )}
               {showSecondarySelectedLabel &&
                 isCustomLabelObject(displayLabel) && (
-                  <span className={cx(styles.label, styles.secondaryLabel)}>
+                  <span className={styles.secondaryLabel}>
                     {(displayLabel as CustomLabel).secondary}
                   </span>
                 )}
@@ -282,7 +282,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
                   )}
                   {showSecondaryOptionLabel &&
                     isCustomLabelObject(countryLabel) && (
-                      <span className={cx(styles.label, styles.secondaryLabel)}>
+                      <span className={styles.secondaryLabel}>
                         {(countryLabel as CustomLabel).secondary}
                       </span>
                     )}
