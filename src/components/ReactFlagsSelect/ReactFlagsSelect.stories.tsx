@@ -83,10 +83,12 @@ export const WithCustomLabelsObject: React.FC<{}> = () => {
   const [selected, setSelected] = useState("");
   const onSelect = (code: string): void => setSelected(code);
 
+  const showSelectedLabel = boolean("Show Selected Label", true);
   const showSecondarySelectedLabel = boolean(
     "Show Secondary Selected Label",
     true
   );
+  const showOptionLabel = boolean("Show Option Label", true);
   const showSecondaryOptionLabel = boolean("Show Secondary Option Label", true);
 
   const customLabels = object("Custom Labels", {
@@ -99,9 +101,12 @@ export const WithCustomLabelsObject: React.FC<{}> = () => {
       <ReactFlagsSelect
         selected={selected}
         onSelect={onSelect}
+        showSelectedLabel={showSelectedLabel}
         showSecondarySelectedLabel={showSecondarySelectedLabel}
+        showOptionLabel={showOptionLabel}
         showSecondaryOptionLabel={showSecondaryOptionLabel}
         customLabels={customLabels}
+        countries={["GB", "US", "FR"]}
       />
     </div>
   );
@@ -111,10 +116,12 @@ export const WithMixedCustomLabels: React.FC<{}> = () => {
   const [selected, setSelected] = useState("");
   const onSelect = (code: string): void => setSelected(code);
 
+  const showSelectedLabel = boolean("Show Selected Label", true);
   const showSecondarySelectedLabel = boolean(
     "Show Secondary Selected Label",
     true
   );
+  const showOptionLabel = boolean("Show Option Label", true);
   const showSecondaryOptionLabel = boolean("Show Secondary Option Label", true);
 
   const customLabels = object("Custom Labels", {
@@ -128,9 +135,12 @@ export const WithMixedCustomLabels: React.FC<{}> = () => {
       <ReactFlagsSelect
         selected={selected}
         onSelect={onSelect}
+        showSelectedLabel={showSelectedLabel}
         showSecondarySelectedLabel={showSecondarySelectedLabel}
+        showOptionLabel={showOptionLabel}
         showSecondaryOptionLabel={showSecondaryOptionLabel}
         customLabels={customLabels}
+        countries={["GB", "US", "FR"]}
       />
     </div>
   );

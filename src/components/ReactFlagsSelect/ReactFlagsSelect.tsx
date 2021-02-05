@@ -116,10 +116,13 @@ const ReactFlagsSelect: React.FC<Props> = ({
 
     const filteredCountriesOptions = countriesOptions.filter((key) => {
       const label = getLabel(key);
-      if (typeof label === "object") {
-        return label && label.primary.match(new RegExp(value, "i"));
+      if (isCustomLabelObject(label)) {
+        return (
+          (label as CustomLabel)?.primary?.match(new RegExp(value, "i")) ||
+          (label as CustomLabel)?.secondary?.match(new RegExp(value, "i"))
+        );
       }
-      return label && label.match(new RegExp(value, "i"));
+      return (label as string)?.match(new RegExp(value, "i"));
     });
 
     setFilteredCountriesOptions(filteredCountriesOptions);
