@@ -62,6 +62,7 @@ export const Primary: React.FC<{}> = () => {
 export const WithCustomLabels: React.FC<{}> = () => {
   const [selected, setSelected] = useState("");
   const onSelect = (code: string): void => setSelected(code);
+  const searchable = boolean("Searchable", false);
 
   const customLabels = object("Custom Labels", {
     GB: "GB",
@@ -74,6 +75,7 @@ export const WithCustomLabels: React.FC<{}> = () => {
         selected={selected}
         onSelect={onSelect}
         customLabels={customLabels}
+        searchable={searchable}
       />
     </div>
   );
@@ -90,6 +92,7 @@ export const WithCustomLabelsObject: React.FC<{}> = () => {
   );
   const showOptionLabel = boolean("Show Option Label", true);
   const showSecondaryOptionLabel = boolean("Show Secondary Option Label", true);
+  const searchable = boolean("Searchable", false);
 
   const customLabels = object("Custom Labels", {
     GB: { primary: "GB", secondary: "+44" },
@@ -107,6 +110,7 @@ export const WithCustomLabelsObject: React.FC<{}> = () => {
         showSecondaryOptionLabel={showSecondaryOptionLabel}
         customLabels={customLabels}
         countries={["GB", "US", "FR"]}
+        searchable={searchable}
       />
     </div>
   );
@@ -123,6 +127,7 @@ export const WithMixedCustomLabels: React.FC<{}> = () => {
   );
   const showOptionLabel = boolean("Show Option Label", true);
   const showSecondaryOptionLabel = boolean("Show Secondary Option Label", true);
+  const searchable = boolean("Searchable", false);
 
   const customLabels = object("Custom Labels", {
     GB: { primary: "GB", secondary: "+44" },
@@ -141,6 +146,7 @@ export const WithMixedCustomLabels: React.FC<{}> = () => {
         showSecondaryOptionLabel={showSecondaryOptionLabel}
         customLabels={customLabels}
         countries={["GB", "US", "FR"]}
+        searchable={searchable}
       />
     </div>
   );
