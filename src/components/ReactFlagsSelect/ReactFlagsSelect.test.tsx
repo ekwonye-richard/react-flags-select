@@ -220,7 +220,7 @@ describe("ReactFlagsSelect", () => {
         openOptions({ searchable: true });
         const searchInput = screen.getByPlaceholderText("Search");
 
-        fireEvent.change(searchInput, { target: { value: "Nige" } });
+        fireEvent.change(searchInput, { target: { value: "nige" } });
         const options = screen.getAllByRole("option");
         expect(options.length).toBe(2);
       });

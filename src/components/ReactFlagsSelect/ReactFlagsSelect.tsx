@@ -6,6 +6,7 @@ import {
   countryCodeToPascalCase,
   getCountryCodes,
   isCustomLabelObject,
+  isCountryLabelMatch,
 } from "../../utils";
 import type {
   CountryCodes,
@@ -118,11 +119,11 @@ const ReactFlagsSelect: React.FC<Props> = ({
       const label = getLabel(key);
       if (isCustomLabelObject(label)) {
         return (
-          (label as CustomLabel)?.primary?.includes(value) ||
-          (label as CustomLabel)?.secondary?.includes(value)
+          isCountryLabelMatch((label as CustomLabel)?.primary, value) ||
+          isCountryLabelMatch((label as CustomLabel)?.secondary, value)
         );
       }
-      return (label as string)?.includes(value);
+      return isCountryLabelMatch(label as string, value);
     });
 
     setFilteredCountriesOptions(filteredCountriesOptions);
