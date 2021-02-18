@@ -1,6 +1,6 @@
 {
   "name": "react-flags-select",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "react-flags-select React component",
   "main": "build/index.js",
   "module": "build/index.esm.js",
