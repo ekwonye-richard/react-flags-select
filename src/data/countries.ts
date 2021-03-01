@@ -150,6 +150,7 @@ export const countries: Countries = {
   NG: "Nigeria",
   NU: "Niue",
   NF: "Norfolk Island",
+  NIR: "Northern Ireland",
   MP: "Northern Mariana Islands",
   NO: "Norway",
   OM: "Oman",
