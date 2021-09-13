@@ -195,6 +195,7 @@ export const countries: Countries = {
   SE: "Sweden",
   CH: "Switzerland",
   SY: "Syria",
+  TP: "East Timor",
   TW: "Taiwan",
   TJ: "Tajikistan",
   TZ: "Tanzania",
