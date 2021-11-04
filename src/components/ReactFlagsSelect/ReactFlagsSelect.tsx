@@ -8,7 +8,7 @@ import {
   isCustomLabelObject,
   isCountryLabelMatch,
 } from "../../utils";
-import type {
+import {
   CountryCodes,
   CustomLabel,
   CustomLabels,
