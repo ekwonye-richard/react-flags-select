@@ -10,7 +10,6 @@
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "declaration": true,
-    "declarationDir": "build/cjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
