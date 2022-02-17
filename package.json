@@ -2,13 +2,11 @@
   "name": "react-flags-select",
   "version": "2.1.2",
   "description": "react-flags-select React component",
-  "main": "build/cjs/index.js",
-  "module": "build/esm/index.js",
-  "types": "build/cjs/index.d.ts",
+  "main": "build/index.js",
+  "module": "build/index.esm.js",
   "files": [
     "build"
   ],
-  "sideEffects": ["*.scss"],
   "scripts": {
     "lint": "yarn check-types && yarn lint:js",
     "check-types": "tsc --noEmit",
