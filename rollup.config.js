@@ -16,9 +16,11 @@ export default {
       sourcemap: true,
     },
     {
-      file: pkg.module,
+      dir: pkg.module.replace(/index\.js$/, ""),
       format: "esm",
       sourcemap: true,
+      preserveModules: true,
+      preserveModulesRoot: "src",
     },
   ],
   plugins: [
@@ -29,7 +31,7 @@ export default {
       presets: ["@babel/env", "@babel/preset-react"],
     }),
     commonjs({ exclude: "/src/components/Flags/Af.js" }),
-    typescript({ useTsconfigDeclarationDir: false }),
+    typescript({ useTsconfigDeclarationDir: true }),
     postcss(),
   ],
 };
