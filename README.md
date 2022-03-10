@@ -121,7 +121,7 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
 
 ### blacklistCountries
 
-`blacklistCountries` is an optional `boolean` prop used to indicate the `countries` prop should be used as a blacklisted, hence these countries will be excluded in the options. The defaut value is `false`.
+`blacklistCountries` is an optional `boolean` prop used to indicate the `countries` prop should be used as blacklisted, hence these countries will be excluded in the options. The defaut value is `false`.
 
 ```javascript
     <ReactFlagsSelect
@@ -194,7 +194,7 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
 
 ### showOptionLabel
 
-`showOptionLabel` is a an optional `boolean` prop used to show or hide the label text of a countries in the options dropdown. The default value is `true`.
+`showOptionLabel` is a an optional `boolean` prop used to show or hide the label text of countries in the options dropdown. The default value is `true`.
 
 ```javascript
     <ReactFlagsSelect
