@@ -167,7 +167,7 @@ export const countries: Countries = {
   PR: "Puerto Rico",
   QA: "Qatar",
   RO: "Romania",
-  RU: "Russia",
+  RU: "Russian",
   RW: "Rwanda",
   KN: "Saint Kitts and Nevis",
   LC: "Saint Lucia",
