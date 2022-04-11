@@ -67,7 +67,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
   blacklistCountries = false,
   fullWidth = true,
   disabled = false,
-  id,
+  id = "rfs",
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const [countriesOptions, setCountriesOptions] = useState<CountryCodes>([]);
@@ -176,6 +176,8 @@ const ReactFlagsSelect: React.FC<Props> = ({
 
   const displayLabel = getLabel(validSelectedValue);
 
+  const btnId = `${id}-btn`;
+
   return (
     <div
       className={cx(styles.flagsSelect, className, {
@@ -186,7 +188,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
     >
       <button
         ref={selectedFlagRef}
-        id="rfs-btn"
+        id={btnId}
         type="button"
         className={cx(styles.selectBtn, selectButtonClassName, {
           [styles.disabledBtn]: disabled,
@@ -195,10 +197,10 @@ const ReactFlagsSelect: React.FC<Props> = ({
         onClick={toggleDropdown}
         onKeyUp={(e) => closeDropdwownWithKeyboard(e)}
         disabled={disabled}
-        aria-labelledby="rfs-btn"
+        aria-labelledby={btnId}
         aria-haspopup="listbox"
         aria-expanded={isDropdownOpen}
-        data-testid="rfs-btn"
+        data-testid={btnId}
       >
         <span className={styles.selectValue}>
           {validSelectedValue ? (
