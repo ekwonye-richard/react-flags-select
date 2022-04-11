@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/ekwonye-richard/react-flags-select/compare/v2.2.0...v2.2.1) (2022-04-11)
+
+
+### Bug Fixes
+
+* tagging ([#152](https://github.com/ekwonye-richard/react-flags-select/issues/152)) ([fc42926](https://github.com/ekwonye-richard/react-flags-select/commit/fc42926dec6b8dbf6961d1b7c6c9171654d0dded))
+
 # [2.1.0](https://github.com/ekwonye-richard/react-flags-select/compare/v2.0.2...v2.1.0) (2022-04-11)
 
 
