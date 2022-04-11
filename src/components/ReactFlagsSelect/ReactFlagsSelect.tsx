@@ -24,7 +24,7 @@ const defaultSearchPlaceholder = "Search";
 type Flags = typeof flags;
 type FlagKey = keyof Flags;
 
-type Props = {
+export type Props = {
   className?: string;
   selected: string;
   onSelect: OnSelect;
@@ -45,6 +45,7 @@ type Props = {
   fullWidth?: boolean;
   disabled?: boolean;
   id?: string;
+  rfsKey?: string;
 };
 
 const ReactFlagsSelect: React.FC<Props> = ({
@@ -67,7 +68,8 @@ const ReactFlagsSelect: React.FC<Props> = ({
   blacklistCountries = false,
   fullWidth = true,
   disabled = false,
-  id = "rfs",
+  id,
+  rfsKey = "rfs",
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
   const [countriesOptions, setCountriesOptions] = useState<CountryCodes>([]);
@@ -176,7 +178,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
 
   const displayLabel = getLabel(validSelectedValue);
 
-  const btnId = `${id}-btn`;
+  const btnId = `${rfsKey}-btn`;
 
   return (
     <div
@@ -184,7 +186,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
         [styles.flagsSelectInline]: !fullWidth,
       })}
       id={id}
-      data-testid="rfs"
+      data-testid={rfsKey}
     >
       <button
         ref={selectedFlagRef}
@@ -207,7 +209,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
             <>
               <span
                 className={styles.selectFlag}
-                data-testid="rfs-selected-flag"
+                data-testid={`${rfsKey}-selected-flag`}
               >
                 {getSelectedFlag()}
               </span>
@@ -246,7 +248,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
             <div className={styles.filterBox}>
               <input
                 type="text"
-                name="rfs-q"
+                name={`${rfsKey}-q`}
                 autoComplete="off"
                 value={filterValue}
                 placeholder={searchPlaceholder || defaultSearchPlaceholder}
@@ -263,7 +265,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
             return (
               <li
                 key={countryCode}
-                id={`rfs-${countryCode}`}
+                id={`${rfsKey}-${countryCode}`}
                 role="option"
                 tabIndex={0}
                 className={cx(styles.selectOption, {

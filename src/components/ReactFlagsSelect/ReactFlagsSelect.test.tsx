@@ -1,7 +1,13 @@
 import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
-import ReactFlagsSelect from ".";
+import ReactFlagsSelect, { Props } from ".";
+import type { OnSelect } from "../../types";
+
+type OpenOptionsProps = Omit<Props, "selected" | "onSelect"> & {
+  selected?: string;
+  onSelect?: OnSelect;
+};
 
 describe("ReactFlagsSelect", () => {
   const defaultProps = {
@@ -9,9 +15,12 @@ describe("ReactFlagsSelect", () => {
     onSelect: jest.fn(),
   };
 
-  const openOptions = (props = {}) => {
+  const openOptions = (props: OpenOptionsProps = {}) => {
+    // no default value for rfsKey in openOptions props to ensure the default value is appropriate in the component
+    const rfsKey = props.rfsKey || "rfs";
+    const btnTestId = `${rfsKey}-btn`;
     render(<ReactFlagsSelect {...defaultProps} {...props} />);
-    fireEvent.click(screen.getByTestId("rfs-btn"));
+    fireEvent.click(screen.getByTestId(btnTestId));
   };
 
   describe("rendering with required and default props", () => {
@@ -377,6 +386,46 @@ describe("ReactFlagsSelect", () => {
       render(<ReactFlagsSelect {...defaultProps} id="origin-country" />);
       const container = screen.getByTestId("rfs");
       expect(container).toHaveAttribute("id", "origin-country");
+    });
+  });
+
+  describe("rfsKey", () => {
+    it("uses the key as the parent div's data-testid", () => {
+      render(<ReactFlagsSelect {...defaultProps} rfsKey="app-lang" />);
+      expect(screen.queryByTestId("rfs")).not.toBeInTheDocument();
+      expect(screen.getByTestId("app-lang")).toBeInTheDocument();
+    });
+
+    it("uses the key to generate the button's id and data-testid", () => {
+      render(<ReactFlagsSelect {...defaultProps} rfsKey="app-lang" />);
+      expect(screen.queryByTestId("rfs-btn")).not.toBeInTheDocument();
+
+      const button = screen.getByTestId("app-lang-btn");
+      expect(button).toHaveAttribute("id", "app-lang-btn");
+    });
+
+    it("uses the key to generate the selected flag's data-testid", () => {
+      render(
+        <ReactFlagsSelect {...defaultProps} rfsKey="app-lang" selected="NG" />
+      );
+      expect(screen.queryByTestId("rfs-selected-flag")).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId("app-lang-selected-flag")
+      ).toBeInTheDocument();
+    });
+
+    it("uses the key to generate the search input's name", () => {
+      openOptions({ rfsKey: "app-lang", searchable: true });
+
+      const searchInput = screen.queryByPlaceholderText("Search");
+      expect(searchInput).toHaveAttribute("name", "app-lang-q");
+    });
+
+    it("uses the key to generate the options list item ids", () => {
+      openOptions({ rfsKey: "app-lang" });
+
+      const optionsList = screen.getByRole("listbox");
+      expect(optionsList.firstChild).toHaveAttribute("id", "app-lang-AF");
     });
   });
 });

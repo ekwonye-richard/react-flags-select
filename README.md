@@ -3,9 +3,11 @@
 A React library that provides a customizable SVG flags select components and standalone SVG flags components.
 
 ## Demo and Example
+
 Live demo: [ekwonye-richard.github.io/react-flags-select/](https://ekwonye-richard.github.io/react-flags-select/?path=/story/reactflagsselect--primary)
 
 ## Installation
+
 ```
 yarn add react-flags-select
 npm install react-flags-select --save
@@ -16,34 +18,34 @@ npm install react-flags-select --save
 ### ReactFlagsSelect
 
 ```javascript
-    import React, { useState } from 'react';
-    import ReactFlagsSelect from 'react-flags-select';
+import React, { useState } from "react";
+import ReactFlagsSelect from "react-flags-select";
 
-    const App = () => {
-      const [selected, setSelected] = useState('');
+const App = () => {
+  const [selected, setSelected] = useState("");
 
-      <ReactFlagsSelect
-        selected={selected}
-        onSelect={code => setSelected(code)}
-      />
-    }
+  <ReactFlagsSelect
+    selected={selected}
+    onSelect={(code) => setSelected(code)}
+  />;
+};
 
-    export default App;
+export default App;
 ```
 
 ### Country Flag
 
 ```javascript
-    import React from 'react';
-    import { Us } from 'react-flags-select';
+import React from "react";
+import { Us } from "react-flags-select";
 
-    const Region = () => (
-      <div>
-        <Us /> United States
-      </div>
-    )
+const Region = () => (
+  <div>
+    <Us /> United States
+  </div>
+);
 
-    export default Region;
+export default Region;
 ```
 
 ### Country Codes
@@ -79,10 +81,11 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
 `placeholder` is an optional `string` prop used replace the default placeholder text for the select input.
 
 ```javascript
-    <ReactFlagsSelect
-    countries={["US", "GB", "FR","DE","IT"]}
-    customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}}
-    placeholder="Select Language" />
+<ReactFlagsSelect
+  countries={["US", "GB", "FR", "DE", "IT"]}
+  customLabels={{ US: "EN-US", GB: "EN-GB", FR: "FR", DE: "DE", IT: "IT" }}
+  placeholder="Select Language"
+/>
 ```
 
 ### searchable
@@ -106,7 +109,6 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
       searchPlaceholder="Search countries"
     />
 ```
-
 
 ### countries
 
@@ -150,13 +152,14 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
       customLabels={{
         "US": { primary: "EN-US", secondary: "+1" },
         "GB": { primary: "EN-GB", secondary: "+44" },
-        "FR": { primary: "FR" } 
+        "FR": { primary: "FR" }
       }}
       />
     />
 ```
 
 `customLabels` can also be mixed between `CustomLabel` and `string`.
+
 ```javascript
     <ReactFlagsSelect
       ...
@@ -183,7 +186,6 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
 ### showSecondarySelectedLabel
 
 `showSecondarySelectedLabel` is an optional `boolean` prop used to show or hide the secondary label text of a selected country. The default value is `true`.
-
 
 ```javascript
     <ReactFlagsSelect
@@ -302,13 +304,25 @@ Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-sele
     />
 ```
 
+### rfsKey
+
+`rfsKey` is a `string` prop used to generate ids, data-testids and the search input's name. The default value us `rfs`. You should have unique `rfsKey` props when rendering multiple `ReactFlagsSelect` at the same time.
+
+```javascript
+    <ReactFlagsSelect
+      ...
+      rfsKey="app-lang"
+    />
+```
+
 ## Flags
 
 Each country flag can be rendered as a SVG component. The components are named by countries Iso2 codes in pascal case.
 
 ```javascript
-    <GB />
+<GB />
 ```
+
 The SVG `viewBox` is preserved and SVG inherits it's parent element's text size.
 
 ## Contribution
@@ -316,18 +330,23 @@ The SVG `viewBox` is preserved and SVG inherits it's parent element's text size.
 This project is written in Typescript and developed with [Storybook](https://storybook.js.org/). Tests are written with Jest and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/). Raise a pull request with your changes.
 
 #### Installation
+
 ```
 yarn install
 ```
 
 #### Start Storybook
+
 Builds SVG components to `src/components/Flags/Countries/
+
 ```
 yarn start
 ```
 
 ## v1 Documentation
+
 [React Flags Select v1](https://github.com/ekwonye-richard/react-flags-select/blob/master/v1.md)
 
 ## License
+
 This project is distributed under the MIT license.
