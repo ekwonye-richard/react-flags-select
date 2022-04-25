@@ -67,6 +67,7 @@ export const WithCustomLabels: React.FC<{}> = () => {
   const customLabels = object("Custom Labels", {
     GB: "GB",
     US: "US",
+    FR: "FR",
   });
 
   return (
