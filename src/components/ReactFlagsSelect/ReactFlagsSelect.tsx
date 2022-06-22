@@ -254,6 +254,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
                 placeholder={searchPlaceholder || defaultSearchPlaceholder}
                 ref={filterTextRef}
                 onChange={filterSearch}
+                autoFocus
               />
             </div>
           )}
