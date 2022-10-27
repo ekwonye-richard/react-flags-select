@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="810" height="540">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="512" height="336">
   <desc>European flag</desc>
   <defs>
     <g id="s">
@@ -13,8 +13,8 @@
         <use xlink:href="#a" transform="scale(-1,1)"/>
       </g>
   </defs>
-  <rect fill="#039" width="810" height="540"/>
-  <g fill="#fc0" transform="scale(30)translate(13.5,9)">
+  <rect fill="#039" width="512" height="336"/>
+  <g fill="#fc0" transform="scale(20)translate(12.5,8)">
     <use xlink:href="#s" y="-6"/>
     <use xlink:href="#s" y="6"/>
     <g id="l">
