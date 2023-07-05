@@ -222,5 +222,5 @@ export const countries: Countries = {
   YE: "Yemen",
   ZM: "Zambia",
   ZW: "Zimbabwe",
-  AX:"Åland Islands"
+  AX: "Åland Islands",
 };
