@@ -141,7 +141,7 @@ describe("ReactFlagsSelect", () => {
       it("renders a list of all countries", () => {
         openOptions();
         const options = screen.getAllByRole("option");
-        expect(options.length).toBe(221);
+        expect(options.length).toBe(222);
       });
 
       it("renders the flag SVG of each country option", () => {
@@ -309,7 +309,7 @@ describe("ReactFlagsSelect", () => {
           blacklistCountries: true,
         });
         const options = screen.getAllByRole("option");
-        expect(options.length).toBe(215);
+        expect(options.length).toBe(216);
       });
 
       it("renders the placeholder if passed selected value is blacklisted", () => {
