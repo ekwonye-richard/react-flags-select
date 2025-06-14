@@ -1,9 +1,8 @@
 name: Publish to NPM
 on:
-  [push]
-  # push:
-  # branches:
-  #   - master
+  push:
+  branches:
+    - master
 
 jobs:
   release:
@@ -19,12 +18,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          registry-url: "https://registry.npmjs.org"
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build Package
         run: yarn run build
-      # - name: Release
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: npx semantic-release
+      - name: Release
+        env:
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # npm login
+          npm publish
