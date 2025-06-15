@@ -15,7 +15,8 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+     "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": [
     "./src/"
