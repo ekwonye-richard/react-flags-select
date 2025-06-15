@@ -1,21 +1,30 @@
 import React from "react";
-import { Meta } from "@storybook/react/types-6-0";
-import { withKnobs, number } from "@storybook/addon-knobs";
-
+import type { Meta, StoryObj } from "@storybook/react";
 import { Us } from ".";
 
-export default {
+const meta: Meta<typeof Us> = {
   title: "Flags",
   component: Us,
-  decorators: [withKnobs],
-} as Meta;
+  argTypes: {
+    fontSize: {
+      control: { type: "number", min: 8, max: 100 },
+      defaultValue: 24,
+      description: "Parent Font Size in px",
+    },
+  },
+};
 
-export const Primary: React.FC<{}> = () => {
-  const fontSize = number("Parent Font Size in px", 24);
+export default meta;
 
-  return (
+type Story = StoryObj<typeof Us>;
+
+export const Primary: Story = {
+  args: {
+    fontSize: 24,
+  },
+  render: ({ fontSize }) => (
     <span style={{ fontSize }}>
       <Us />
     </span>
-  );
+  ),
 };
