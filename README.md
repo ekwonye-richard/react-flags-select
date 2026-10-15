@@ -10,19 +10,19 @@ Live demo: [Original React Flags Select Storybook](https://ekwonye-richard.githu
 Install the customized package using npm:
 
 ```bash
-npm install @sb10122001k/react-flags-select
+npm install @shubhamkumarbaranwall/react-flags-select
 ```
 
 Or using Yarn:
 
 ```bash
-yarn add @sb10122001k/react-flags-select
+yarn add @shubhamkumarbaranwall/react-flags-select
 ```
 
 ## Usage
 
 ```tsx
-import ReactFlagsSelect from "@sb10122001k/react-flags-select";
+import ReactFlagsSelect from "@shubhamkumarbaranwall/react-flags-select";
 
 <ReactFlagsSelect
   selected={selected}

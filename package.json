@@ -1,12 +1,30 @@
 {
-  "name": "@sb10122001k/react-flags-select",
+  "name": "@shubhamkumarbaranwall/react-flags-select",
   "version": "1.0.0",
-  "description": "react-flags-select React component",
+  "description": "A React country flag selector with configurable prioritized country ordering.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sb10122001k/react-flags-select.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sb10122001k/react-flags-select/issues"
+  },
+  "homepage": "https://github.com/sb10122001k/react-flags-select#readme",
   "main": "build/index.js",
   "module": "build/index.esm.js",
+  "types": "build/index.d.ts",
   "files": [
     "build"
   ],
+  "keywords": [
+    "react",
+    "react-flags-select",
+    "country-flags",
+    "country-selector",
+    "prioritized-countries"
+  ],
+  "author": "Shubham Kumar Baranwall",
+  "license": "MIT",
   "scripts": {
     "lint": "yarn check-types && yarn lint:js",
     "check-types": "tsc --noEmit",
@@ -86,18 +104,5 @@
   },
   "resolutions": {
     "wrap-ansi": "6.2.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ekwonye-richard/react-flags-select.git"
-  },
-  "author": "Richard Ekwonye",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ekwonye-richard/react-flags-select/issues"
-  },
-  "homepage": "https://github.com/ekwonye-richard/react-flags-select#readme",
-  "keywords": [
-    "react-component"
-  ]
+  }
 }
