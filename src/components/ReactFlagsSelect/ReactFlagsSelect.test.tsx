@@ -2,7 +2,7 @@ import React from "react";
 import { render, fireEvent, screen } from "@testing-library/react";
 
 import ReactFlagsSelect, { Props } from ".";
-import type { OnSelect } from "../../types";
+import type { CountryCodes, OnSelect } from "../../types";
 
 type OpenOptionsProps = Omit<Props, "selected" | "onSelect"> & {
   selected?: string;
@@ -426,6 +426,69 @@ describe("ReactFlagsSelect", () => {
 
       const optionsList = screen.getByRole("listbox");
       expect(optionsList.firstChild).toHaveAttribute("id", "app-lang-AF");
+    });
+  });
+
+  const renderCountrySelect = (
+    props: Partial<React.ComponentProps<typeof ReactFlagsSelect>> = {}
+  ) => {
+    render(<ReactFlagsSelect selected="" onSelect={jest.fn()} {...props} />);
+
+    fireEvent.click(screen.getByTestId("rfs-btn"));
+
+    return screen
+      .getAllByRole("option")
+      .map((option) => option.id.replace("rfs-", ""));
+  };
+
+  describe("prioritizedCountries", () => {
+    it("preserves the existing order when prioritizedCountries is omitted", () => {
+      const result = renderCountrySelect({
+        countries: ["US", "GB", "IN"],
+      });
+
+      expect(result).toEqual(["US", "GB", "IN"]);
+    });
+
+    it("renders each prioritized country only once when codes are duplicated", () => {
+      const result = renderCountrySelect({
+        countries: ["US", "GB", "IN"],
+        prioritizedCountries: ["IN", "GB", "IN", "GB"],
+      });
+
+      expect(result).toEqual(["IN", "GB", "US"]);
+      expect(new Set(result).size).toBe(result.length);
+    });
+
+    it("ignores invalid and unavailable country codes", () => {
+      const result = renderCountrySelect({
+        countries: ["US", "GB", "IN"],
+        prioritizedCountries: ["XX", "IN", "GB"] as CountryCodes,
+      });
+
+      expect(result).toEqual(["IN", "GB", "US"]);
+      expect(result).not.toContain("XX");
+    });
+
+    it("prioritizes only countries included in a custom countries list", () => {
+      const result = renderCountrySelect({
+        countries: ["US", "GB"],
+        prioritizedCountries: ["IN", "GB"],
+      });
+
+      expect(result).toEqual(["GB", "US"]);
+      expect(result).not.toContain("IN");
+    });
+
+    it("never renders blacklisted countries, even when prioritized", () => {
+      const result = renderCountrySelect({
+        countries: ["US"],
+        blacklistCountries: true,
+        prioritizedCountries: ["US", "GB"],
+      });
+
+      expect(result).not.toContain("US");
+      expect(result[0]).toBe("GB");
     });
   });
 });

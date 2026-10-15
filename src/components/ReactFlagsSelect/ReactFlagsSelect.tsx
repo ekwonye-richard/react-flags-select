@@ -46,6 +46,9 @@ export type Props = {
   disabled?: boolean;
   id?: string;
   rfsKey?: string;
+
+  // New prop: country codes to display first, in order
+  prioritizedCountries?: CountryCodes;
 };
 
 const ReactFlagsSelect: React.FC<Props> = ({
@@ -69,6 +72,7 @@ const ReactFlagsSelect: React.FC<Props> = ({
   fullWidth = true,
   disabled = false,
   id,
+  prioritizedCountries,
   rfsKey = "rfs",
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
@@ -165,8 +169,22 @@ const ReactFlagsSelect: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setCountriesOptions(getCountryCodes(countries, blacklistCountries));
-  }, [countries, blacklistCountries]);
+    const availableCountries = getCountryCodes(countries, blacklistCountries);
+
+    // Keep only valid, unique prioritized country codes.
+    const prioritized = (prioritizedCountries ?? []).filter(
+      (code, index, list) =>
+        availableCountries.includes(code) && list.indexOf(code) === index
+    );
+
+    // Move prioritized countries to the beginning.
+    // Preserve the relative order of all remaining countries.
+    const remaining = availableCountries.filter(
+      (code) => !prioritized.includes(code)
+    );
+
+    setCountriesOptions([...prioritized, ...remaining]);
+  }, [countries, blacklistCountries, prioritizedCountries]);
 
   useEffect(() => {
     window.addEventListener("click", closeDropdown);

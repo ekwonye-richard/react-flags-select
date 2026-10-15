@@ -1,33 +1,53 @@
 # react-flags-select
 
-A React library that provides a customizable SVG flags select components and standalone SVG flags components.
-
+A customizable React library for SVG country flag selectors and standalone SVG flag components, featuring configurable country ordering to prioritize specific countries in the dropdown.
 ## Demo and Example
 
-Live demo: [ekwonye-richard.github.io/react-flags-select/](https://ekwonye-richard.github.io/react-flags-select/?path=/story/reactflagsselect--primary)
+Live demo: [Original React Flags Select Storybook](https://ekwonye-richard.github.io/react-flags-select/?path=/story/reactflagsselect--primary)
 
 ## Installation
 
+Install the customized package using npm:
+
+```bash
+npm install @sb10122001k/react-flags-select
 ```
-yarn add react-flags-select
-npm install react-flags-select --save
+
+Or using Yarn:
+
+```bash
+yarn add @sb10122001k/react-flags-select
 ```
 
 ## Usage
 
+```tsx
+import ReactFlagsSelect from "@sb10122001k/react-flags-select";
+
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  prioritizedCountries={["IN", "GB"]}
+/>
+```
+
+The `prioritizedCountries` prop allows you to display selected countries at the beginning of the dropdown in your preferred order.
+
 ### ReactFlagsSelect
 
-```javascript
+```jsx
 import React, { useState } from "react";
 import ReactFlagsSelect from "react-flags-select";
 
 const App = () => {
   const [selected, setSelected] = useState("");
 
-  <ReactFlagsSelect
-    selected={selected}
-    onSelect={(code) => setSelected(code)}
-  />;
+  return (
+    <ReactFlagsSelect
+      selected={selected}
+      onSelect={(code) => setSelected(code)}
+    />
+  );
 };
 
 export default App;
@@ -35,7 +55,7 @@ export default App;
 
 ### Country Flag
 
-```javascript
+```jsx
 import React from "react";
 import { Us } from "react-flags-select";
 
@@ -50,298 +70,365 @@ export default Region;
 
 ### Country Codes
 
-Full list of [Country Codes](https://github.com/ekwonye-richard/react-flags-select/blob/master/src/data/countries.ts).
+See the [full list of country codes](https://github.com/ekwonye-richard/react-flags-select/blob/master/src/data/countries.ts).
 
 ## Props
 
 ### selected
 
-`selected` is a required `string` prop that holds the current value of the input.
+Required `string` representing the currently selected country code.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      selected={selected}
-    />
+```jsx
+<ReactFlagsSelect selected={selected} />
 ```
 
 ### onSelect
 
-`onSelect` is a required function prop which recieves the user selected countryCode which should be used to update the selected value.
+Required callback invoked with the selected country code. Use it to update the selected value.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      onSelect={code => setSelected(code)}
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={(code) => setSelected(code)}
+/>
 ```
 
 ### placeholder
 
-`placeholder` is an optional `string` prop used replace the default placeholder text for the select input.
+Optional `string` used to replace the default placeholder text.
 
-```javascript
+```jsx
 <ReactFlagsSelect
-  countries={["US", "GB", "FR", "DE", "IT"]}
-  customLabels={{ US: "EN-US", GB: "EN-GB", FR: "FR", DE: "DE", IT: "IT" }}
+  selected={selected}
+  onSelect={setSelected}
   placeholder="Select Language"
 />
 ```
 
 ### searchable
 
-`searchable` is an optional `boolean` prop used which add the option to search through the options list. The default value is `false`.
+Optional `boolean` that enables searching through the country options. Defaults to `false`.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      searchable
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  searchable
+/>
 ```
 
 ### searchPlaceholder
 
-`searchPlaceholder` is an optional `string` prop used replace the default placeholder text for the search input.
+Optional `string` used to customize the search input's placeholder.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      searchPlaceholder="Search countries"
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  searchable
+  searchPlaceholder="Search countries"
+/>
 ```
 
 ### countries
 
-`countries` is an optional `array` of `string` used replace the default full list of countries. Only countries included in the full list are valid.
+Optional array of country-code strings used to restrict the available countries to a custom list. Only supported country codes are valid.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      countries={["US", "GB", "FR", "DE", "IT", "NG"]}
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  countries={["US", "GB", "FR", "DE", "IT", "IN"]}
+/>
 ```
 
 ### blacklistCountries
 
-`blacklistCountries` is an optional `boolean` prop used to indicate the `countries` prop should be used as blacklisted, hence these countries will be excluded in the options. The defaut value is `false`.
+Optional `boolean` that treats the `countries` array as a blacklist. When enabled, the listed countries are excluded from the options. Defaults to `false`.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      countries={["US", "GB", "FR", "DE", "IT", "NG"]}
-      blacklistCountries
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  countries={["US", "GB", "FR"]}
+  blacklistCountries
+/>
 ```
+
+### prioritizedCountries
+
+Optional array of country-code strings specifying which countries should appear first in the dropdown, in the order provided.
+
+Countries listed in `prioritizedCountries` are moved to the beginning of the available country list. All remaining countries retain their original relative order.
+
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  prioritizedCountries={["IN", "GB"]}
+/>
+```
+
+In this example:
+
+1. India (`IN`) appears first, at index `0`.
+2. The United Kingdom (`GB`) appears second, at index `1`.
+3. All remaining available countries follow in their original relative order.
+
+The prop works with `countries` and `blacklistCountries`. A prioritized country is moved only if it is available in the resulting country list.
+
+Additional behavior:
+
+- The prop is optional. When omitted, the existing country order is preserved.
+- Duplicate country codes in the prioritized list are ignored.
+- Country codes that are invalid or unavailable are ignored.
+- Countries excluded by `blacklistCountries` cannot be prioritized into the dropdown.
+
+Example combining custom countries and priorities:
+
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  countries={["US", "GB", "FR", "IN"]}
+  prioritizedCountries={["IN", "GB"]}
+/>
+```
+
+The resulting order is India, United Kingdom, United States, France.
 
 ### customLabels
 
-`customLabels` is an optional `object` prop used to define custom labels. The default country name for a country code will be used when the country code has no label passed.
+Optional object mapping country codes to custom labels. If a country has no custom label, its default country name is used.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      customLabels={{"US": "EN-US","GB": "EN-GB","FR": "FR","DE": "DE","IT": "IT"}} />
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  customLabels={{
+    US: "EN-US",
+    GB: "EN-GB",
+    FR: "FR",
+    DE: "DE",
+    IT: "IT",
+  }}
+/>
 ```
 
-`customLabels` now also accepts an array of objects (`CustomLabel`) instead of an array of strings. The default country name will still be shown if no label is passed. Also the secondary label will only be shown if there is one present.
+Labels can also contain a primary and secondary value:
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      customLabels={{
-        "US": { primary: "EN-US", secondary: "+1" },
-        "GB": { primary: "EN-GB", secondary: "+44" },
-        "FR": { primary: "FR" }
-      }}
-      />
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  customLabels={{
+    US: { primary: "EN-US", secondary: "+1" },
+    GB: { primary: "EN-GB", secondary: "+44" },
+    FR: { primary: "FR" },
+  }}
+/>
 ```
 
-`customLabels` can also be mixed between `CustomLabel` and `string`.
+Strings and label objects can be mixed:
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      customLabels={{
-        "US": { primary: "EN-US", secondary: "+1" },
-        "GB": { primary: "EN-GB", secondary: "+44" },
-        "FR": "FR"
-      }}
-      />
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  customLabels={{
+    US: { primary: "EN-US", secondary: "+1" },
+    GB: { primary: "EN-GB", secondary: "+44" },
+    FR: "FR",
+  }}
+/>
 ```
 
 ### showSelectedLabel
 
-`showSelectedLabel` is a an optional `boolean` prop used to show or hide the label text of a selected country. The default value is `true`.
+Optional `boolean` controlling whether the selected country's label is displayed. Defaults to `true`.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      showSelectedLabel={false}
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  showSelectedLabel={false}
+/>
 ```
 
 ### showSecondarySelectedLabel
 
-`showSecondarySelectedLabel` is an optional `boolean` prop used to show or hide the secondary label text of a selected country. The default value is `true`.
+Optional `boolean` controlling whether the secondary label of the selected country is displayed. Defaults to `true`.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      showSecondarySelectedLabel={false}
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  showSecondarySelectedLabel={false}
+/>
 ```
 
 ### showOptionLabel
 
-`showOptionLabel` is a an optional `boolean` prop used to show or hide the label text of countries in the options dropdown. The default value is `true`.
+Optional `boolean` controlling whether country labels appear in the dropdown options. Defaults to `true`.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      showOptionLabel={false}
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  showOptionLabel={false}
+/>
 ```
 
 ### showSecondaryOptionLabel
 
-`showSecondaryOptionLabel` is a an optional `boolean` prop used to show or hide the secondary label text of a countries in the options dropdown. The default value is `true`.
+Optional `boolean` controlling whether secondary labels appear in the dropdown options. Defaults to `true`.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      showSecondaryOptionLabel={false}
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  showSecondaryOptionLabel={false}
+/>
 ```
 
 ### selectedSize
 
-`selectedSize` is an optional `number` prop used to set the size in pixels of the selected label and the corresponding flag.
+Optional `number` specifying the selected flag and label size in pixels.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      selectedSize={14}
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  selectedSize={14}
+/>
 ```
 
 ### optionsSize
 
-`optionsSize` is an optional `number` prop used to set the size in pixels of the options labels and the corresponding flags.
+Optional `number` specifying the flag and label size in the dropdown options.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      optionsSize={14}
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  optionsSize={14}
+/>
 ```
 
 ### className
 
-`className` is an optional `string` prop used to pass a `className` to the top container of the Select component.
+Optional `string` passed to the top-level select container.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      className="menu-flags"
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  className="menu-flags"
+/>
 ```
 
 ### selectButtonClassName
 
-`selectButtonClassName` is an optional `string` prop used to pass a `className` to the select button.
+Optional `string` passed to the select button.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      selectButtonClassName="menu-flags-button"
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  selectButtonClassName="menu-flags-button"
+/>
 ```
 
 ### fullWidth
 
-`fullWidth` is an optional `boolean` prop used to decide if the Select component should render as a block element or inline element. The default value is `true` which is a block element.
+Optional `boolean` controlling whether the select occupies the full available width. Defaults to `true`.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      fullWidth={false}
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  fullWidth={false}
+/>
 ```
 
 ### alignOptionsToRight
 
-`alignOptionsToRight` is an optional `boolean` prop useful when `fullWidth` is `false` to set the options alignment to right. The default value is `false`.
+Optional `boolean` that aligns the dropdown options to the right. Useful when `fullWidth` is `false`. Defaults to `false`.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      alignOptionsToRight
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  fullWidth={false}
+  alignOptionsToRight
+/>
 ```
 
 ### disabled
 
-`disabled` is a `boolean` prop used to disable to the Select component. The default value is `false`.
+Optional `boolean` that disables the select. Defaults to `false`.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      disabled
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  disabled
+/>
 ```
 
 ### id
 
-`id` is a `string` prop used to set the id of the top container of the Select component.
+Optional `string` used as the ID of the top-level select container.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      id="flags-select"
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  id="flags-select"
+/>
 ```
 
 ### rfsKey
 
-`rfsKey` is a `string` prop used to generate ids, data-testids and the search input's name. The default value us `rfs`. You should have unique `rfsKey` props when rendering multiple `ReactFlagsSelect` at the same time.
+Optional `string` used to generate IDs, test IDs, and the search input's name. Defaults to `"rfs"`. Use a unique value when rendering multiple selectors simultaneously.
 
-```javascript
-    <ReactFlagsSelect
-      ...
-      rfsKey="app-lang"
-    />
+```jsx
+<ReactFlagsSelect
+  selected={selected}
+  onSelect={setSelected}
+  rfsKey="app-lang"
+/>
 ```
 
 ## Flags
 
-Each country flag can be rendered as a SVG component. The components are named by countries Iso2 codes in pascal case.
+Each country flag can be rendered as an SVG component. Component names use the country ISO 3166-1 alpha-2 codes in PascalCase.
 
-```javascript
+```jsx
+import { GB } from "react-flags-select";
+
 <GB />
 ```
 
-The SVG `viewBox` is preserved and SVG inherits it's parent element's text size.
+The SVG `viewBox` is preserved, and the SVG inherits its parent's text size.
 
 ## Contribution
 
-This project is written in Typescript and developed with [Storybook](https://storybook.js.org/). Tests are written with Jest and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/). Raise a pull request with your changes.
+This project is written in TypeScript and developed with [Storybook](https://storybook.js.org/). Tests use Jest and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
 
-#### Installation
+### Installation
 
-```
+```bash
 yarn install
 ```
 
-#### Start Storybook
+### Start Storybook
 
-Builds SVG components to `src/components/Flags/Countries/
-
-```
+```bash
 yarn start
 ```
+
+This command generates the country flag components and starts Storybook.
 
 ## v1 Documentation
 
